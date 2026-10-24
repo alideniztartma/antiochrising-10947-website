@@ -1,0 +1,1227 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="assets/logo/logo-192.webp" type="image/webp">
+<title>Antioch Rising 10947</title>
+<meta name="description" content="Antioch Rising, FIRST Robotics Competition Team 10947 from Hatay Fen Lisesi, Hatay, Türkiye.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zilla+Slab:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Hanken+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<script>document.documentElement.classList.add('js');</script>
+<style>
+body{margin:0}
+/* Layout concept: a mosaic floor at night. Content sits on a 12-column "grout" grid; tile bands
+   (from the crest's slate + terracotta border) separate sections; the phoenix medallion is the light source. */
+:root{
+  color-scheme: dark;
+  /* Color — sampled from the crest */
+  --night:#13120d;      /* grout at night */
+  --night-2:#1b1a13;    /* raised surface */
+  --slate:#2c2d22;      /* crest border, dark */
+  --slate-2:#3b3c2d;    /* crest border */
+  --line:#3a382b;       /* hairlines */
+  --cream:#ead6a9;      /* tesserae field — primary text */
+  --cream-dim:#ab9c7a;  /* secondary text */
+  --ochre:#d6a65a;      /* gold tiles — accent text */
+  --ember:#dc7c2e;      /* phoenix highlight — primary accent */
+  --terra:#9e4a24;      /* phoenix body */
+  --rust:#6e2f15;       /* phoenix shadow */
+  --oxblood:#8e2a1e;    /* "10947" on the crest */
+  --laurel:#4f5b3a;     /* olive leaves */
+  --on-light:#16140e;
+  /* Type */
+  --display:"Zilla Slab", "Rockwell", "Roboto Slab", Georgia, serif;
+  --body:"Hanken Grotesk", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --mono:"JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  /* Scale */
+  --s-1:.8125rem; --s0:1rem; --s1:1.1875rem; --s2:1.5rem; --s3:2rem;
+  --h2:clamp(2.25rem, 1.4rem + 3.6vw, 4.5rem);
+  --space:clamp(72px, 9vw, 152px);
+  --ease:cubic-bezier(.2,.75,.1,1);
+  --navh:68px;
+}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--navh) + env(safe-area-inset-top,0px) + 8px)}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{background:var(--night);color:var(--cream);font-family:var(--body);font-size:var(--s0);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--night)}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opacity:.06;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 .9  0 0 0 0 .7  0 0 0 .9 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+a{color:inherit}
+img{max-width:100%;display:block}
+h1,h2,h3{font-family:var(--display);font-weight:600;line-height:1;margin:0;text-wrap:balance;letter-spacing:-.015em}
+p{margin:0;text-wrap:pretty}
+:focus-visible{outline:2px solid var(--ember);outline-offset:3px}
+[hidden]{display:none!important}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.skip{position:fixed;left:max(16px, env(safe-area-inset-left,0px));top:calc(env(safe-area-inset-top,0px) + 8px);z-index:100;background:var(--ember);color:var(--on-light);padding:10px 14px;font-weight:600;transform:translateY(-200%);transition:transform .2s}
+.skip:focus{transform:none}
+
+.wrap{max-width:1360px;margin-inline:auto;padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px))}
+@media (min-width:900px){.wrap{padding-left:max(48px, env(safe-area-inset-left, 0px));padding-right:max(48px, env(safe-area-inset-right, 0px))}}
+section{position:relative}
+.sec{padding-block:var(--space)}
+
+.eyebrow{font-family:var(--mono);font-size:.75rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ochre);display:flex;align-items:center;gap:12px}
+.eyebrow::before{content:"";width:9px;height:9px;background:var(--ember);flex:none;box-shadow:12px 0 0 -1px var(--terra),24px 0 0 -2px var(--rust);margin-right:24px}
+.h2{font-size:var(--h2);margin-top:20px}
+.h2 em{font-style:italic;color:var(--ember);font-weight:500}
+.lede{font-size:var(--s1);color:var(--cream-dim);max-width:60ch}
+.mono{font-family:var(--mono);font-size:.75rem;letter-spacing:.08em;text-transform:uppercase}
+.pending{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--cream-dim)}
+.pending::before{content:"";width:7px;height:7px;border:1px solid var(--ochre);transform:rotate(45deg)}
+
+/* Buttons */
+.btn{--bg:var(--ember);--fg:var(--on-light);display:inline-flex;align-items:center;gap:14px;min-height:52px;padding:0 22px 0 24px;background:var(--bg);color:var(--fg);font:600 1rem/1 var(--body);text-decoration:none;border:0;cursor:pointer;position:relative;overflow:hidden;transition:transform .3s var(--ease)}
+.btn svg{width:18px;height:18px;transition:transform .35s var(--ease)}
+.btn:hover svg{transform:translateX(4px)}
+.btn::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent 30%,rgba(255,240,210,.35) 50%,transparent 70%);transform:translateX(-110%);transition:transform .7s var(--ease)}
+.btn:hover::after{transform:translateX(110%)}
+.btn.ghost{--bg:transparent;--fg:var(--cream);box-shadow:inset 0 0 0 1px var(--slate-2)}
+.btn.ghost:hover{box-shadow:inset 0 0 0 1px var(--ochre)}
+.btn:active{transform:translateY(1px)}
+.textlink{color:var(--ochre);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px}
+.textlink:hover{color:var(--ember)}
+
+/* ---------- NAV ---------- */
+.nav{position:fixed;top:0;left:0;right:0;z-index:50;padding-top:env(safe-area-inset-top,0px);transition:background .4s,box-shadow .4s}
+.nav.scrolled{background:rgba(19,18,13,.94);box-shadow:0 1px 0 var(--line)}
+.nav-in{height:var(--navh);display:flex;align-items:center;gap:24px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;flex:none}
+.brand img{width:40px;height:40px}
+.brand b{display:block;font:700 1.05rem/1 var(--display);letter-spacing:.06em}
+.brand span{display:block;font:500 .66rem/1 var(--mono);letter-spacing:.2em;color:var(--ochre);margin-top:5px}
+.links{display:none;list-style:none;margin:0 0 0 auto;padding:0;gap:4px;position:relative}
+.links a{display:block;padding:10px 12px;text-decoration:none;font-size:.92rem;color:var(--cream-dim);transition:color .2s}
+.links a:hover,.links a[aria-current="true"]{color:var(--cream)}
+.links .tick{position:absolute;bottom:2px;left:0;width:7px;height:7px;background:var(--ember);transform:translateX(var(--x,-40px)) rotate(45deg);transition:transform .5s var(--ease),opacity .3s;opacity:0}
+.nav-tools{display:flex;align-items:center;gap:10px;margin-left:auto}
+.lang{display:flex;box-shadow:inset 0 0 0 1px var(--slate-2)}
+.lang button{background:none;border:0;color:var(--cream-dim);font:500 .75rem/1 var(--mono);letter-spacing:.1em;padding:0 11px;min-height:40px;min-width:44px;cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--cream);color:var(--on-light)}
+.nav .btn{min-height:42px;padding:0 16px;font-size:.9rem;display:none}
+.menu-btn{display:flex;align-items:center;gap:10px;background:none;border:0;color:var(--cream);font:500 .8rem/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;min-height:44px;padding:0 4px;cursor:pointer}
+.menu-btn i{display:grid;grid-template-columns:repeat(3,5px);gap:3px}
+.menu-btn i::before,.menu-btn i::after,.menu-btn i b{content:"";width:5px;height:5px;background:var(--ember)}
+.progress{position:absolute;left:0;bottom:0;height:2px;width:100%;background:var(--ember);transform-origin:0 50%;transform:scaleX(var(--p,0))}
+@media (max-width:479px){.menu-btn span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}.brand b{font-size:.95rem}.nav-in{gap:12px}.lang button{min-width:40px;padding:0 8px}}
+@media (min-width:1100px){.links{display:flex}.nav-tools{margin-left:12px}.nav .btn{display:inline-flex}.menu-btn{display:none}}
+
+.sheet{position:fixed;inset:0;z-index:70;background:var(--night);display:flex;flex-direction:column;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+.sheet[hidden]{display:none!important}
+.sheet-top{height:var(--navh);display:flex;align-items:center;justify-content:space-between}
+.sheet ol{list-style:none;margin:24px 0 0;padding:0;counter-reset:m}
+.sheet li a{display:flex;align-items:baseline;gap:16px;padding:12px 0;font:600 clamp(1.9rem,8vw,2.6rem)/1.05 var(--display);text-decoration:none;border-bottom:1px solid var(--line)}
+.sheet li a::before{counter-increment:m;content:counter(m,decimal-leading-zero);font:500 .72rem/1 var(--mono);color:var(--ochre);letter-spacing:.1em;min-width:22px}
+.sheet .btn{margin-top:28px;align-self:flex-start}
+
+/* ---------- HERO ---------- */
+.hero{padding-top:calc(var(--navh) + env(safe-area-inset-top,0px) + clamp(24px,5vw,64px));padding-bottom:clamp(40px,5vw,72px);overflow:hidden;isolation:isolate}
+.hero::before{content:"";position:absolute;z-index:-2;width:min(1100px,140vw);aspect-ratio:1;right:-22%;top:-12%;background:radial-gradient(closest-side,rgba(220,124,46,.22),rgba(158,74,36,.08) 55%,transparent 72%)}
+#embers{position:absolute;inset:0;z-index:-1;width:100%;height:100%;pointer-events:none}
+.giant{position:absolute;z-index:-1;right:-.04em;bottom:-.2em;font:700 clamp(140px,31vw,500px)/1 var(--display);letter-spacing:-.04em;color:transparent;-webkit-text-stroke:1px rgba(234,214,169,.13);user-select:none;pointer-events:none;white-space:nowrap}
+.hero-grid{display:grid;gap:28px;grid-template-columns:minmax(0,1fr);grid-template-areas:"eyebrow" "title" "medal" "lede" "cta" "facts"}
+.hero .eyebrow{grid-area:eyebrow}
+.hero h1{grid-area:title;font-size:clamp(3rem,1.5rem + 7.4vw,7.6rem);line-height:.9;font-weight:600;letter-spacing:-.03em}
+.hero h1 em{display:block;font-style:italic;font-weight:500;color:var(--ember)}
+.hero h1 .w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.08em;margin-bottom:-.08em}
+.hero h1 .w>span{display:inline-block}
+.hero .lede{grid-area:lede}
+.ctas{grid-area:cta;display:flex;flex-wrap:wrap;gap:12px}
+.facts{grid-area:facts;margin:12px 0 0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-top:1px solid var(--line)}
+.facts div{padding:18px 16px 0 0;min-width:0}
+.facts dt{font:500 .68rem/1.3 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--cream-dim)}
+.facts dd{margin:8px 0 0;font:600 1.15rem/1.2 var(--display);font-variant-numeric:tabular-nums}
+.facts dd small{display:block;font:500 .78rem/1.3 var(--mono);color:var(--ochre);margin-top:6px;letter-spacing:.04em}
+.medal-stage{grid-area:medal;position:relative;width:min(86vw,560px);justify-self:center;perspective:1200px}
+.medal{position:relative;aspect-ratio:960/970;max-width:100%;transform-style:preserve-3d;transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));will-change:transform}
+.medal img{position:absolute;inset:0;width:100%;height:100%;filter:drop-shadow(0 40px 50px rgba(0,0,0,.55)) drop-shadow(0 0 60px rgba(220,124,46,.18));transition:opacity .8s ease}
+.medal canvas{position:absolute;inset:0;width:100%;height:100%;transition:opacity .6s ease}
+.sheen{position:absolute;inset:0;border-radius:50%;pointer-events:none;mix-blend-mode:soft-light;opacity:0;transition:opacity .5s;background:radial-gradient(circle at var(--mx,50%) var(--my,30%),rgba(255,236,200,.85),rgba(255,236,200,0) 42%)}
+.medal-stage:hover .sheen{opacity:1}
+.dial{position:absolute;inset:-6%;width:112%;height:112%;pointer-events:none;color:var(--slate-2)}
+.dial .spin{transform-origin:50% 50%;animation:spin 140s linear infinite}
+.dial text{font:500 6.2px var(--mono);letter-spacing:.3em;fill:var(--cream-dim)}
+@keyframes spin{to{transform:rotate(360deg)}}
+.scroll-cue{display:none}
+@media (min-width:900px){
+  .hero-grid{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);column-gap:clamp(32px,5vw,96px);row-gap:28px;grid-template-areas:"eyebrow medal" "title medal" "lede medal" "cta medal" "facts facts";align-items:start}
+  .hero .eyebrow{align-self:end}
+  .medal-stage{width:min(100%,600px);align-self:center;justify-self:end}
+  .facts{grid-template-columns:repeat(4,minmax(0,1fr));margin-top:clamp(24px,4vw,56px)}
+  .facts div{padding:22px 24px 0 0;border-right:1px solid var(--line);margin-right:24px}
+  .facts div:last-child{border-right:0}
+  .scroll-cue{display:flex;align-items:center;gap:10px;position:absolute;left:max(48px, env(safe-area-inset-left,0px));bottom:24px;color:var(--cream-dim)}
+}
+@media (prefers-reduced-motion: no-preference){
+  .hero h1 .w>span{animation:wordUp 1.1s var(--ease) both;animation-delay:calc(120ms + var(--i) * 70ms)}
+  .hero .eyebrow,.hero .lede,.ctas,.facts{animation:fadeUp 1s var(--ease) both}
+  .hero .lede{animation-delay:.45s}.ctas{animation-delay:.55s}.facts{animation-delay:.7s}
+  .js .medal img.pre{opacity:.08}
+}
+@keyframes wordUp{from{transform:translateY(108%)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}}
+
+/* ---------- TILE BAND (section transitions) ---------- */
+.band{display:block;width:100%;height:27px;background:
+  repeating-linear-gradient(90deg,var(--slate-2) 0 7px,transparent 7px 9px) 0 0/100% 7px no-repeat,
+  repeating-linear-gradient(90deg,var(--terra) 0 7px,transparent 7px 9px) 0 10px/100% 7px no-repeat,
+  repeating-linear-gradient(90deg,var(--slate-2) 0 7px,transparent 7px 9px) 0 20px/100% 7px no-repeat}
+.band.live{background:none}
+
+/* ---------- REVEALS ---------- */
+@media (prefers-reduced-motion: no-preference){
+  .is-in[data-reveal]{animation:fadeUp 1s var(--ease) both;animation-delay:var(--d,0s)}
+}
+
+/* ---------- IDENTITY ---------- */
+.identity-grid{display:grid;gap:clamp(32px,5vw,80px);grid-template-columns:minmax(0,1fr)}
+.statement{font:600 clamp(2rem,1.2rem + 3.6vw,4.4rem)/1.02 var(--display);letter-spacing:-.02em}
+.statement em{font-style:italic;font-weight:500;color:var(--ochre)}
+.identity-body{display:grid;gap:24px;align-content:start}
+.identity-body p{font-size:var(--s1);color:var(--cream-dim);max-width:58ch}
+.origin{display:flex;gap:18px;align-items:center;padding-top:20px;border-top:1px solid var(--line)}
+.origin img{width:72px;height:72px;flex:none}
+.origin b{display:block;font:500 .78rem/1.4 var(--mono);letter-spacing:.16em;color:var(--cream)}
+.origin span{display:block;font-size:.9rem;color:var(--cream-dim);margin-top:2px}
+.values{list-style:none;margin:clamp(48px,6vw,88px) 0 0;padding:0;display:grid;gap:2px;grid-template-columns:minmax(0,1fr);background:var(--line)}
+.values li{background:var(--night);padding:28px 0 32px;display:grid;gap:12px;align-content:start}
+.values .glyph{display:grid;grid-template-columns:repeat(3,10px);gap:2px;margin-bottom:8px}
+.values .glyph i{width:10px;height:10px;background:var(--c)}
+.values h3{font-size:var(--s3)}
+.values p{color:var(--cream-dim);max-width:44ch}
+@media (min-width:900px){
+  .identity-grid{grid-template-columns:minmax(0,1.25fr) minmax(0,1fr)}
+  .values{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .values li{padding:32px 32px 36px 0}
+  .values li+li{padding-left:32px}
+}
+
+/* ---------- ROBOT ---------- */
+.robot{background:linear-gradient(var(--night-2),var(--night) 80%)}
+.robot-head{display:flex;flex-wrap:wrap;gap:24px;align-items:end;justify-content:space-between}
+.tabs{display:flex;box-shadow:inset 0 0 0 1px var(--slate-2);max-width:100%;overflow-x:auto}
+.tabs button{background:none;border:0;color:var(--cream-dim);font:500 .8rem/1 var(--mono);letter-spacing:.08em;padding:0 18px;min-height:48px;cursor:pointer;white-space:nowrap;position:relative}
+.tabs button[aria-selected="true"]{color:var(--on-light);background:var(--cream)}
+.robot-grid{display:grid;gap:clamp(24px,3vw,48px);margin-top:clamp(32px,4vw,56px);grid-template-columns:minmax(0,1fr)}
+.frame{position:relative;aspect-ratio:16/11;max-width:100%;background:
+  radial-gradient(ellipse at 50% 100%,rgba(220,124,46,.16),transparent 60%),
+  repeating-linear-gradient(0deg,transparent 0 23px,rgba(234,214,169,.05) 23px 24px),
+  repeating-linear-gradient(90deg,transparent 0 23px,rgba(234,214,169,.05) 23px 24px),var(--night);
+  box-shadow:inset 0 0 0 1px var(--line);overflow:hidden}
+.frame::before,.frame::after{content:"";position:absolute;pointer-events:none}
+.frame::before{left:0;right:0;top:0;height:10px;background:repeating-linear-gradient(90deg,var(--slate-2) 0 1px,transparent 1px 12px)}
+.frame::after{top:0;bottom:0;left:0;width:10px;background:repeating-linear-gradient(0deg,var(--slate-2) 0 1px,transparent 1px 12px)}
+.corner{position:absolute;width:18px;height:18px;border:1.5px solid var(--ochre);pointer-events:none}
+.corner.tl{top:20px;left:20px;border-right:0;border-bottom:0}.corner.tr{top:20px;right:20px;border-left:0;border-bottom:0}
+.corner.bl{bottom:20px;left:20px;border-right:0;border-top:0}.corner.br{bottom:20px;right:20px;border-left:0;border-top:0}
+@media (max-width:699px){.frame{aspect-ratio:4/5}.frame.has-photo{aspect-ratio:4/3}}
+.robot-media{display:grid;gap:12px;min-width:0;align-content:start}
+.frame.has-photo{aspect-ratio:3/2}
+.frame .shade{position:absolute;inset:auto 0 0 0;height:38%;background:linear-gradient(to top,rgba(19,18,13,.82),rgba(19,18,13,0));pointer-events:none}
+.frame.has-photo .frame-meta{color:var(--cream);z-index:1}
+.thumbs{display:grid;grid-template-columns:repeat(var(--n,3),minmax(0,200px));gap:12px}
+.thumbs button{position:relative;padding:0;border:0;background:var(--night);cursor:pointer;aspect-ratio:3/2;overflow:hidden;opacity:.5;box-shadow:inset 0 0 0 1px var(--line);transition:opacity .25s}
+.thumbs button:hover{opacity:.85}
+.thumbs button[aria-pressed="true"]{opacity:1;outline:2px solid var(--ember);outline-offset:3px}
+.thumbs img{width:100%;height:100%;object-fit:cover;display:block}
+@media (prefers-reduced-motion: no-preference){.frame img.robot-photo{animation:photoIn .6s var(--ease) both}}
+@keyframes photoIn{from{opacity:0;transform:scale(1.03)}}
+.frame-empty{position:absolute;inset:0;display:grid;place-content:center;justify-items:center;text-align:center;gap:14px;padding:48px 32px}
+.frame-empty .ph{width:clamp(80px,14vw,132px);opacity:.9}
+.frame-empty strong{font:600 clamp(1.3rem,1rem + 1.4vw,2rem)/1.1 var(--display)}
+.frame-empty p{color:var(--cream-dim);font-size:.92rem;max-width:40ch}
+.frame-meta{position:absolute;left:24px;right:24px;bottom:22px;display:flex;justify-content:space-between;gap:12px;color:var(--cream-dim);font:500 .66rem/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;padding-left:22px}
+.frame img.robot-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hotspot{position:absolute;width:44px;height:44px;margin:-22px 0 0 -22px;border-radius:50%;border:0;background:none;cursor:pointer;display:grid;place-items:center}
+.hotspot::before{content:"";width:14px;height:14px;background:var(--ember);transform:rotate(45deg);box-shadow:0 0 0 6px rgba(220,124,46,.25)}
+.hotspot-pop{position:absolute;max-width:260px;background:var(--night);border:1px solid var(--ochre);padding:14px 16px;font-size:.9rem;z-index:2}
+.robot-status{display:flex;align-items:center;gap:10px;font:500 .78rem/1.4 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ochre)}
+.robot-status::before{content:"";width:8px;height:8px;background:var(--ember);flex:none}
+.robot-side h3{font-size:clamp(1.9rem,1.4rem + 2vw,3rem);margin-top:16px}
+.robot-side .game{color:var(--cream-dim);margin-top:10px}
+.specs{margin:28px 0 0;display:grid;grid-template-columns:minmax(0,1fr)}
+.specs div{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;padding:14px 0;border-bottom:1px solid var(--line);align-items:baseline}
+.specs dt{color:var(--cream-dim);font-size:.95rem}
+.specs dd{margin:0;font:600 1.05rem/1.2 var(--display);text-align:right}
+.robot-note{margin-top:20px;font-size:.88rem;color:var(--cream-dim);max-width:52ch}
+@media (min-width:900px){.robot-grid{grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);align-items:start}}
+
+/* ---------- PROCESS ---------- */
+.process-grid{display:grid;gap:clamp(24px,4vw,64px);margin-top:clamp(32px,4vw,64px);grid-template-columns:minmax(0,1fr)}
+.steps{list-style:none;margin:0;padding:0;display:flex;gap:8px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:6px;scrollbar-width:thin}
+.steps button{scroll-snap-align:start;background:none;border:0;box-shadow:inset 0 0 0 1px var(--line);color:var(--cream-dim);font:inherit;display:flex;align-items:center;gap:12px;padding:0 16px;min-height:52px;white-space:nowrap;cursor:pointer;text-align:left;width:100%;transition:color .2s,box-shadow .2s,background .2s}
+.steps button b{font:500 .72rem/1 var(--mono);color:var(--ochre);letter-spacing:.1em}
+.steps button span{font:600 1.05rem/1 var(--display)}
+.steps button[aria-selected="true"]{background:var(--cream);color:var(--on-light);box-shadow:none}
+.steps button[aria-selected="true"] b{color:var(--terra)}
+.steps button:hover{color:var(--cream);box-shadow:inset 0 0 0 1px var(--ochre)}
+.steps button[aria-selected="true"]:hover{color:var(--on-light)}
+.stage{position:relative;min-height:340px;padding:clamp(24px,3vw,48px);background:var(--night-2);box-shadow:inset 0 0 0 1px var(--line);overflow:hidden;display:grid;align-content:space-between;gap:32px}
+.stage-num{position:absolute;right:-.05em;top:-.22em;font:700 clamp(9rem,6rem + 12vw,18rem)/1 var(--display);color:transparent;-webkit-text-stroke:1px rgba(214,166,90,.22);pointer-events:none}
+.stage h3{font-size:clamp(2.2rem,1.6rem + 3vw,4.2rem);position:relative}
+.stage p{font-size:var(--s1);color:var(--cream-dim);max-width:46ch;margin-top:18px;position:relative}
+.tags{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:0;padding:0;position:relative}
+.tags li{font:500 .72rem/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;padding:9px 12px;box-shadow:inset 0 0 0 1px var(--slate-2);color:var(--cream)}
+.track{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;position:relative}
+.track i{height:8px;background:var(--slate-2);transition:background .5s var(--ease)}
+.track i.on{background:var(--ember)}
+.track i.done{background:var(--terra)}
+@media (prefers-reduced-motion: no-preference){.stage.swap h3,.stage.swap p,.stage.swap .tags{animation:fadeUp .6s var(--ease) both}.stage.swap p{animation-delay:.06s}.stage.swap .tags{animation-delay:.12s}}
+@media (min-width:900px){
+  .process-grid{grid-template-columns:minmax(0,.8fr) minmax(0,1.4fr)}
+  .steps{flex-direction:column;overflow:visible;gap:6px}
+  .steps button{min-height:60px;padding:0 20px}
+  .stage{min-height:480px}
+}
+
+/* ---------- TEAM ---------- */
+.team-head{display:grid;gap:24px;grid-template-columns:minmax(0,1fr);align-items:end}
+@media (min-width:900px){.team-head{grid-template-columns:minmax(0,1.2fr) minmax(0,1fr)}}
+.mosaic{display:grid;gap:3px;margin-top:clamp(32px,4vw,56px);background:var(--night);grid-template-columns:minmax(0,1fr)}
+.cell{--bg:var(--slate);--fg:var(--cream);--sub:rgba(234,214,169,.78);background:var(--bg);color:var(--fg);padding:clamp(22px,2.4vw,36px);display:grid;align-content:space-between;gap:28px;min-height:220px;position:relative;overflow:hidden}
+.cell h3{font-size:clamp(1.6rem,1.2rem + 1.4vw,2.4rem)}
+.cell p{color:var(--sub);max-width:42ch;margin-top:12px}
+.cell .who{font:500 .72rem/1.4 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--sub);display:flex;flex-wrap:wrap;gap:6px 14px}
+.cell .who span{display:inline-flex;gap:8px;align-items:center}
+.cell .who span::before{content:"";width:6px;height:6px;background:currentColor;opacity:.7}
+.cell .tess{position:absolute;right:18px;top:18px;display:grid;grid-template-columns:repeat(4,9px);gap:2px;opacity:.5}
+.cell .tess i{width:9px;height:9px;background:currentColor}
+.cell.mech .tess{grid-template-columns:repeat(6,14px);gap:3px;top:auto;bottom:clamp(22px,2.4vw,36px);right:clamp(22px,2.4vw,36px);opacity:.28}
+.cell.mech .tess i{width:14px;height:14px}
+.cell.mech .tess i:nth-child(7n+3){opacity:.4}.cell.mech .tess i:nth-child(5n+1){opacity:.7}
+.cell.mech{--bg:var(--terra);--fg:#f5e6c4;--sub:rgba(245,230,196,.82)}
+.cell.soft{--bg:var(--laurel);--fg:#f1e4c4;--sub:rgba(241,228,196,.8)}
+.cell.pr,.cell.elec{--bg:var(--ochre);--fg:var(--on-light);--sub:rgba(22,20,14,.78)}
+.cell.media{--bg:var(--cream);--fg:var(--on-light);--sub:rgba(22,20,14,.74)}
+.cell.out{--bg:var(--slate-2)}
+.cell.ment{--bg:var(--rust);--fg:#f3e2bf;--sub:rgba(243,226,191,.8)}
+@media (min-width:700px){.mosaic{grid-template-columns:repeat(2,minmax(0,1fr))}.cell.mech{grid-row:span 2;min-height:460px}}
+@media (min-width:1100px){
+  .mosaic{grid-template-columns:repeat(12,minmax(0,1fr))}
+  .cell.mech{grid-column:1/7;grid-row:1/3;min-height:520px}
+  .cell.soft{grid-column:7/13}.cell.pr{grid-column:7/13}
+}
+
+/* ---------- IMPACT ---------- */
+.impact{background:var(--night-2)}
+.impact-statement{font:600 clamp(2.2rem,1.2rem + 4.4vw,5.4rem)/1 var(--display);letter-spacing:-.025em;max-width:21ch;margin-top:24px}
+.impact-statement em{font-style:italic;font-weight:500;color:var(--ember)}
+.impact-grid{display:grid;gap:clamp(32px,5vw,80px);margin-top:clamp(40px,5vw,72px);grid-template-columns:minmax(0,1fr)}
+.offers{list-style:none;margin:0;padding:0;display:grid;gap:0}
+.offers li{display:grid;grid-template-columns:auto minmax(0,1fr);gap:20px;padding:22px 0;border-top:1px solid var(--line)}
+.offers li:last-child{border-bottom:1px solid var(--line)}
+.offers .sq{width:14px;height:14px;margin-top:8px;background:var(--c)}
+.offers h3{font-size:var(--s2)}
+.offers p{color:var(--cream-dim);margin-top:8px;max-width:50ch}
+.impact-side{display:grid;gap:24px;align-content:start}
+.impact-side p{color:var(--cream-dim);font-size:var(--s1);max-width:50ch}
+.log{display:grid;gap:10px;padding:20px;box-shadow:inset 0 0 0 1px var(--line)}
+.log-entry{display:grid;grid-template-columns:auto minmax(0,1fr);gap:16px;padding:12px 0;border-top:1px solid var(--line)}
+@media (min-width:900px){.impact-grid{grid-template-columns:minmax(0,1.2fr) minmax(0,1fr)}}
+
+/* ---------- SPONSORS ---------- */
+.tiers{display:grid;gap:clamp(28px,3vw,44px);margin-top:clamp(40px,5vw,64px)}
+.tier{display:grid;gap:16px;grid-template-columns:minmax(0,1fr)}
+.tier-label{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+.tier-label h3{font-size:var(--s2);font-style:italic;font-weight:500;color:var(--ochre)}
+.tier-label span{color:var(--cream-dim);font-size:.92rem}
+.slots{display:grid;gap:3px;grid-template-columns:repeat(var(--n),minmax(0,1fr))}
+.slot{aspect-ratio:var(--ar);max-width:100%;display:grid;place-items:center;background:
+  repeating-linear-gradient(45deg,transparent 0 10px,rgba(234,214,169,.035) 10px 11px),var(--night-2);box-shadow:inset 0 0 0 1px var(--line);color:var(--cream-dim);font:500 .7rem/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;text-decoration:none;padding:12px;text-align:center}
+.slot img{max-height:70%;max-width:80%;object-fit:contain}
+.slot .wordmark{font:600 clamp(1.3rem,.9rem + 1.6vw,2.4rem)/1.1 var(--display);letter-spacing:.01em;text-transform:none;color:var(--cream)}
+.tier.t1 .slot .wordmark{font-size:clamp(2rem,1.2rem + 3.6vw,4.4rem);letter-spacing:.04em}
+.tier.t1 .slot{background:radial-gradient(ellipse at 50% 120%,rgba(220,124,46,.18),transparent 60%),var(--night-2);box-shadow:inset 0 0 0 1px var(--slate-2)}
+a.slot:hover{box-shadow:inset 0 0 0 1px var(--ochre);color:var(--cream)}
+.tier.t1 .slots{--n:1;--ar:3/1}.tier.t2 .slots{--n:2;--ar:16/7}.tier.t3 .slots{--n:2;--ar:3/2}
+@media (min-width:700px){.tier.t3 .slots{--n:4}}
+@media (min-width:900px){.tier.t1 .slots{--ar:4/1}.tier{grid-template-columns:minmax(0,.7fr) minmax(0,2fr);align-items:center}.tier-label{display:grid;gap:6px}}
+.sponsor-foot{margin-top:clamp(32px,4vw,56px);display:flex;flex-wrap:wrap;gap:20px 40px;align-items:center;justify-content:space-between;padding-top:28px;border-top:1px solid var(--line)}
+.sponsor-foot p{color:var(--cream-dim);max-width:62ch;font-size:.92rem}
+
+/* ---------- SEASON ---------- */
+.season-grid{display:grid;gap:clamp(32px,5vw,80px);margin-top:clamp(40px,5vw,64px);grid-template-columns:minmax(0,1fr)}
+.award{position:relative;padding:clamp(28px,3vw,44px);background:var(--terra);color:#f5e6c4;overflow:hidden;display:grid;gap:20px;align-content:space-between;min-height:360px}
+.award canvas{position:absolute;inset:0;width:100%;height:100%;opacity:.55}
+.award>*{position:relative}
+.award .mono{color:rgba(245,230,196,.85)}
+.award h3{font-size:clamp(2.4rem,1.6rem + 3.4vw,4.4rem);line-height:.95}
+.award p{max-width:36ch;color:rgba(245,230,196,.88)}
+.award a{color:#f5e6c4}
+.timeline{list-style:none;margin:0;padding:0;position:relative}
+.timeline::before{content:"";position:absolute;left:5px;top:10px;bottom:10px;width:1px;background:var(--slate-2)}
+.timeline li{position:relative;padding:0 0 32px 36px}
+.timeline li::before{content:"";position:absolute;left:0;top:7px;width:11px;height:11px;background:var(--night);box-shadow:inset 0 0 0 1.5px var(--ochre);transform:rotate(45deg)}
+.timeline li.win::before{background:var(--ember);box-shadow:none}
+.timeline li.next::before{background:var(--night);box-shadow:inset 0 0 0 1.5px var(--ember)}
+.timeline time{font:500 .75rem/1.4 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ochre)}
+.timeline h3{font-size:var(--s2);margin-top:6px}
+.timeline p{color:var(--cream-dim);margin-top:6px;max-width:52ch}
+.chip{display:inline-block;font:500 .66rem/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;padding:6px 8px;margin-left:8px;vertical-align:middle;box-shadow:inset 0 0 0 1px currentColor;color:var(--ember)}
+.source{font-size:.88rem;color:var(--cream-dim);display:flex;flex-wrap:wrap;gap:6px 18px}
+@media (min-width:900px){.season-grid{grid-template-columns:minmax(0,1fr) minmax(0,1.15fr)}.award{position:sticky;top:calc(var(--navh) + 32px)}}
+
+/* ---------- CONTACT ---------- */
+.contact-grid{display:grid;gap:clamp(40px,5vw,80px);margin-top:clamp(32px,4vw,56px);grid-template-columns:minmax(0,1fr)}
+form{display:grid;gap:22px}
+.field{display:grid;gap:8px}
+.field label,.field legend{font:500 .72rem/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--cream-dim);padding:0}
+.field input,.field textarea{width:100%;box-sizing:border-box;background:transparent;border:0;border-bottom:1px solid var(--slate-2);color:var(--cream);font:400 1.1rem/1.4 var(--body);padding:10px 0 12px;border-radius:0}
+.field textarea{min-height:120px;resize:vertical}
+.field input:focus,.field textarea:focus{outline:none;border-bottom-color:var(--ember)}
+.field input:focus-visible,.field textarea:focus-visible{box-shadow:0 2px 0 var(--ember)}
+.field .err{color:#f0a070;font-size:.85rem;min-height:1.2em}
+fieldset{border:0;margin:0;padding:0}
+.who-pick{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.who-pick label{position:relative;cursor:pointer}
+.who-pick input{position:absolute;opacity:0;width:1px;height:1px}
+.who-pick span{display:inline-flex;align-items:center;min-height:44px;padding:0 16px;box-shadow:inset 0 0 0 1px var(--slate-2);font:500 .92rem/1 var(--body);color:var(--cream-dim);transition:all .2s}
+.who-pick input:checked+span{background:var(--cream);color:var(--on-light);box-shadow:none}
+.who-pick input:focus-visible+span{outline:2px solid var(--ember);outline-offset:3px}
+.ready{padding:24px;background:var(--night-2);box-shadow:inset 0 0 0 1px var(--ochre);display:grid;gap:16px}
+.ready pre{margin:0;white-space:pre-wrap;font:400 .9rem/1.6 var(--mono);color:var(--cream);max-height:220px;overflow:auto}
+.ready .row{display:flex;flex-wrap:wrap;gap:10px}
+.channels{display:grid;gap:0;margin:0}
+.channels div{display:grid;grid-template-columns:minmax(0,9rem) minmax(0,1fr);gap:16px;padding:16px 0;border-bottom:1px solid var(--line);align-items:baseline}
+.channels dt{font:500 .72rem/1.4 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--cream-dim)}
+.channels dd{margin:0;font-weight:500;min-width:0;overflow-wrap:anywhere}
+.paths{display:grid;gap:3px;grid-template-columns:repeat(2,minmax(0,1fr));margin-top:28px}
+.paths button{background:var(--night-2);border:0;box-shadow:inset 0 0 0 1px var(--line);color:var(--cream);text-align:left;padding:18px;cursor:pointer;display:grid;gap:6px;font:inherit;transition:box-shadow .2s}
+.paths button:hover{box-shadow:inset 0 0 0 1px var(--ochre)}
+.paths b{font:600 1.2rem/1 var(--display)}
+.paths span{font-size:.85rem;color:var(--cream-dim)}
+@media (min-width:900px){.contact-grid{grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)}}
+
+/* ---------- FOOTER ---------- */
+footer{padding-top:clamp(56px,7vw,112px);padding-bottom:calc(32px + env(safe-area-inset-bottom,0px));overflow:hidden}
+.foot-giant{font:700 clamp(2.4rem,10.6vw,11.5rem)/.85 var(--display);letter-spacing:-.035em;white-space:nowrap;color:var(--cream)}
+.foot-giant em{font-style:italic;font-weight:500;color:var(--ember)}
+.foot-grid{display:grid;gap:32px;margin-top:clamp(40px,5vw,72px);grid-template-columns:repeat(2,minmax(0,1fr))}
+.foot-grid h4{margin:0 0 14px;font:500 .72rem/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--ochre)}
+.foot-grid ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.foot-grid a{text-decoration:none;color:var(--cream-dim)}
+.foot-grid a:hover{color:var(--cream)}
+.foot-id{grid-column:1/-1;display:flex;gap:18px;align-items:center}
+.foot-id img{width:84px;height:84px}
+.foot-id p{color:var(--cream-dim);font-size:.92rem;max-width:36ch}
+.fine{margin-top:48px;padding-top:20px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:12px 32px;justify-content:space-between;color:var(--cream-dim);font-size:.8rem}
+.top-btn{background:none;border:0;color:var(--cream);font:500 .75rem/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;cursor:pointer;display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0}
+@media (min-width:900px){.foot-grid{grid-template-columns:minmax(0,1.6fr) repeat(3,minmax(0,1fr))}.foot-id{grid-column:auto;align-items:flex-start;flex-direction:column}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main" data-i18n="skip">Skip to content</a>
+
+<header class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="#top" aria-label="Antioch Rising, FRC 10947">
+      <img src="assets/logo/logo-192.webp" width="40" height="40" alt="">
+      <div><b>ANTIOCH RISING</b><span>FRC · 10947</span></div>
+    </a>
+    <ul class="links" id="links">
+      <li><a href="#robot" data-i18n="nav.robot">Robot</a></li>
+      <li><a href="#process" data-i18n="nav.process">Process</a></li>
+      <li><a href="#team" data-i18n="nav.team">Team</a></li>
+      <li><a href="#impact" data-i18n="nav.impact">Impact</a></li>
+      <li><a href="#sponsors" data-i18n="nav.sponsors">Sponsors</a></li>
+      <li><a href="#season" data-i18n="nav.season">Season</a></li>
+      <li aria-hidden="true" class="tick"></li>
+    </ul>
+    <div class="nav-tools">
+      <div class="lang" role="group" aria-label="Language / Dil">
+        <button type="button" data-lang="tr" aria-pressed="false">TR</button>
+        <button type="button" data-lang="en" aria-pressed="true">EN</button>
+      </div>
+      <a class="btn" href="#contact" data-i18n="nav.contact">Contact</a>
+      <button class="menu-btn" type="button" id="menuOpen" aria-expanded="false" aria-controls="sheet"><i><b></b></i><span data-i18n="menu">Menu</span></button>
+    </div>
+  </div>
+  <div class="progress" id="progress" aria-hidden="true"></div>
+</header>
+
+<div class="sheet" id="sheet" hidden role="dialog" aria-modal="true" aria-label="Menu">
+  <div class="wrap" style="display:flex;flex-direction:column;flex:1;overflow:auto">
+    <div class="sheet-top">
+      <a class="brand" href="#top" data-close><img src="assets/logo/logo-192.webp" width="40" height="40" alt=""><div><b>ANTIOCH RISING</b><span>FRC · 10947</span></div></a>
+      <button class="menu-btn" type="button" id="menuClose" data-i18n="close">Close</button>
+    </div>
+    <ol>
+      <li><a href="#identity" data-close data-i18n="nav.identity">Identity</a></li>
+      <li><a href="#robot" data-close data-i18n="nav.robot">Robot</a></li>
+      <li><a href="#process" data-close data-i18n="nav.process">Process</a></li>
+      <li><a href="#team" data-close data-i18n="nav.team">Team</a></li>
+      <li><a href="#impact" data-close data-i18n="nav.impact">Impact</a></li>
+      <li><a href="#sponsors" data-close data-i18n="nav.sponsors">Sponsors</a></li>
+      <li><a href="#season" data-close data-i18n="nav.season">Season</a></li>
+      <li><a href="#contact" data-close data-i18n="nav.contact">Contact</a></li>
+    </ol>
+  </div>
+</div>
+
+<main id="main">
+<!-- A. HERO -->
+<section class="hero" id="top" aria-labelledby="heroTitle">
+  <canvas id="embers" aria-hidden="true"></canvas>
+  <div class="giant" aria-hidden="true">10947</div>
+  <div class="wrap hero-grid">
+    <p class="eyebrow" data-i18n="hero.eyebrow">FIRST® Robotics Competition · Team 10947</p>
+    <h1 id="heroTitle" data-i18n-html="hero.title">Rising, <em>piece by piece.</em></h1>
+    <div class="medal-stage" id="medalStage">
+      <svg class="dial" viewBox="0 0 200 200" aria-hidden="true">
+        <g class="spin">
+          <circle cx="100" cy="100" r="96" fill="none" stroke="currentColor" stroke-width=".6" stroke-dasharray=".6 2.4"/>
+          <circle cx="100" cy="100" r="92.5" fill="none" stroke="currentColor" stroke-width=".4"/>
+          <path id="arc" d="M100,100 m-88,0 a88,88 0 1,1 176,0 a88,88 0 1,1 -176,0" fill="none"/>
+          <text><textPath href="#arc" startOffset="2%">ANTIOCHIA AD ORONTEM · 36.20° N 36.16° E · TEAM 10947 · HATAY · TÜRKİYE ·</textPath></text>
+        </g>
+      </svg>
+      <div class="medal" id="medal">
+        <img id="logo" class="pre" src="assets/logo/logo-960.webp" width="960" height="970" fetchpriority="high" alt="Antioch Rising crest: a phoenix in terracotta and gold mosaic tiles rising between olive branches, with the words Antioch Rising 10947" data-i18n-alt="hero.logoAlt">
+        <canvas id="tiles" aria-hidden="true"></canvas>
+        <div class="sheen" aria-hidden="true"></div>
+      </div>
+    </div>
+    <p class="lede" data-i18n="hero.lede">Antioch Rising is the FIRST Robotics Competition team of Hatay Fen Lisesi. We design, build and program competition robots the way Antioch’s mosaicists worked: one precise piece at a time.</p>
+    <div class="ctas">
+      <a class="btn" href="#robot"><span data-i18n="hero.cta1">Explore the robot</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a class="btn ghost" href="#team"><span data-i18n="hero.cta2">Meet the team</span></a>
+    </div>
+    <dl class="facts">
+      <div><dt data-i18n="facts.rookie">Rookie year</dt><dd>2026</dd></div>
+      <div><dt data-i18n="facts.school">School</dt><dd>Hatay Fen Lisesi</dd></div>
+      <div><dt data-i18n="facts.home">Home</dt><dd>Hatay, Türkiye</dd></div>
+      <div><dt data-i18n="facts.next">Next event</dt><dd>Haliç Regional<small id="countdown">2–4 Apr 2027</small></dd></div>
+    </dl>
+  </div>
+  <a class="scroll-cue mono" href="#identity"><span data-i18n="scroll">Scroll</span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 4v16M6 14l6 6 6-6"/></svg></a>
+</section>
+
+<canvas class="band" aria-hidden="true"></canvas>
+
+<!-- B. IDENTITY -->
+<section class="sec" id="identity" aria-labelledby="idTitle">
+  <div class="wrap">
+    <p class="eyebrow" data-i18n="id.eyebrow">Our identity</p>
+    <div class="identity-grid" style="margin-top:28px">
+      <h2 class="statement" id="idTitle" data-reveal data-i18n-html="id.statement">Antioch has always made great things out of <em>small pieces.</em></h2>
+      <div class="identity-body" data-reveal style="--d:.1s">
+        <p data-i18n="id.body">The phoenix on our crest is laid in tesserae, the small stone tiles of the mosaics Antioch is famous for. We took the name and the method. A robot is thousands of small decisions, each one measured, tested and set in place by a team that rises together.</p>
+        <div class="origin">
+          <img src="assets/logo/logo-192.webp" width="72" height="72" alt="" loading="lazy">
+          <div><b>ANTIOCHIA AD ORONTEM</b><span data-i18n="id.origin">Founded around 300 BC on the Orontes, today’s Antakya.</span></div>
+        </div>
+      </div>
+    </div>
+    <ul class="values">
+      <li data-reveal><div class="glyph" aria-hidden="true"><i style="--c:var(--ember)"></i><i style="--c:var(--ochre)"></i><i style="--c:var(--terra)"></i></div><h3 data-i18n="v1.t">Precision</h3><p data-i18n="v1.p">We model, measure and test before we cut. Small tolerances decide matches.</p></li>
+      <li data-reveal style="--d:.08s"><div class="glyph" aria-hidden="true"><i style="--c:var(--laurel)"></i><i style="--c:var(--cream)"></i><i style="--c:var(--laurel)"></i></div><h3 data-i18n="v2.t">One crew</h3><p data-i18n="v2.p">Mechanical, software and PR work as one crew. A mosaic only holds when every tile does.</p></li>
+      <li data-reveal style="--d:.16s"><div class="glyph" aria-hidden="true"><i style="--c:var(--rust)"></i><i style="--c:var(--ember)"></i><i style="--c:var(--ochre)"></i></div><h3 data-i18n="v3.t">Gracious Professionalism®</h3><p data-i18n="v3.p">We compete hard and help other teams along the way. That is the FIRST way, and ours.</p></li>
+    </ul>
+  </div>
+</section>
+
+<!-- C. ROBOT -->
+<section class="sec robot" id="robot" aria-labelledby="robotTitle">
+  <div class="wrap">
+    <div class="robot-head">
+      <div>
+        <p class="eyebrow" data-i18n="robot.eyebrow">Meet the robot</p>
+        <h2 class="h2" id="robotTitle" data-i18n-html="robot.title">Built for <em>the field.</em></h2>
+      </div>
+      <div class="tabs" role="tablist" aria-label="Season" id="seasonTabs"></div>
+    </div>
+    <div class="robot-grid" id="robotPanel" role="tabpanel"></div>
+  </div>
+</section>
+
+<canvas class="band" aria-hidden="true"></canvas>
+
+<!-- D. PROCESS -->
+<section class="sec" id="process" aria-labelledby="procTitle">
+  <div class="wrap">
+    <p class="eyebrow" data-i18n="proc.eyebrow">Engineering process</p>
+    <h2 class="h2" id="procTitle" data-i18n-html="proc.title">From blank page <em>to the field.</em></h2>
+    <div class="process-grid">
+      <div class="steps" role="tablist" aria-orientation="vertical" id="steps" aria-labelledby="procTitle"></div>
+      <div class="stage" id="stage" role="tabpanel" tabindex="0"></div>
+    </div>
+  </div>
+</section>
+
+<!-- E. TEAM -->
+<section class="sec" id="team" aria-labelledby="teamTitle" style="padding-top:0">
+  <div class="wrap">
+    <div class="team-head">
+      <div>
+        <p class="eyebrow" data-i18n="team.eyebrow">The team</p>
+        <h2 class="h2" id="teamTitle" data-i18n-html="team.title">The crew <em>behind the robot.</em></h2>
+      </div>
+      <p class="lede" data-i18n="team.note">Our 2027 roster is being finalized. Names, roles and portraits will appear here as the season starts.</p>
+    </div>
+    <div class="mosaic" id="mosaic"></div>
+  </div>
+</section>
+
+<canvas class="band" aria-hidden="true"></canvas>
+
+<!-- F. IMPACT -->
+<section class="sec impact" id="impact" aria-labelledby="impactTitle">
+  <div class="wrap">
+    <p class="eyebrow" data-i18n="impact.eyebrow">Impact &amp; outreach</p>
+    <h2 class="impact-statement" id="impactTitle" data-reveal data-i18n-html="impact.title">Robotics should be within reach of <em>every student in Hatay.</em></h2>
+    <div class="impact-grid">
+      <ul class="offers" id="offers"></ul>
+      <div class="impact-side" data-reveal>
+        <p data-i18n="impact.body">We are a young team, and we are building our outreach the way we build robots: on purpose and on the record. Every activity we run will be logged here with the date, the place and who it reached.</p>
+        <div class="log" id="log"></div>
+        <a class="btn" href="#contact" data-topic="school"><span data-i18n="impact.cta">Invite us to your school</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<canvas class="band" aria-hidden="true"></canvas>
+
+<!-- G. SPONSORS -->
+<section class="sec" id="sponsors" aria-labelledby="spTitle">
+  <div class="wrap">
+    <div class="team-head">
+      <div>
+        <p class="eyebrow" data-i18n="sp.eyebrow">Sponsors &amp; partners</p>
+        <h2 class="h2" id="spTitle" data-i18n-html="sp.title">Set a piece <em>in the mosaic.</em></h2>
+      </div>
+      <p class="lede" data-i18n="sp.body">Sponsors fund parts, tools, event registration and travel. Partners appear here at a size that matches their level of support.</p>
+    </div>
+    <div class="tiers" id="tiers"></div>
+    <div class="sponsor-foot">
+      <p data-i18n="sp.foot">Tier names come from mosaic craft: the emblema is the central panel of a mosaic, and a tessera is a single tile.</p>
+      <a class="btn" href="#contact" data-topic="sponsor"><span data-i18n="sp.cta">Become a sponsor</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- H. SEASON -->
+<section class="sec robot" id="season" aria-labelledby="seasonTitle">
+  <div class="wrap">
+    <p class="eyebrow" data-i18n="season.eyebrow">Season &amp; achievements</p>
+    <h2 class="h2" id="seasonTitle" data-i18n-html="season.title">The record <em>so far.</em></h2>
+    <div class="season-grid">
+      <article class="award" data-reveal>
+        <canvas id="awardTiles" aria-hidden="true"></canvas>
+        <p class="mono">FRC · 2026 · REBUILT™ · Marmara Regional</p>
+        <div>
+          <h3>Team Spirit<br>Award</h3>
+          <p style="margin-top:16px" data-i18n="season.award">Our first award, earned at our first event in our rookie season.</p>
+        </div>
+        <a class="textlink mono" style="color:#f5e6c4" href="https://frc-events.firstinspires.org/2026/awards?id=678" target="_blank" rel="noopener" data-i18n="season.awardLink">View on FRC Events</a>
+      </article>
+      <div>
+        <ol class="timeline" id="timeline"></ol>
+        <p class="source"><span data-i18n="season.source">Results verified on</span><a class="textlink" href="https://frc-events.firstinspires.org/team/10947" target="_blank" rel="noopener">FRC Events</a><a class="textlink" href="https://www.thebluealliance.com/team/10947/2027" target="_blank" rel="noopener">The Blue Alliance</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<canvas class="band" aria-hidden="true"></canvas>
+
+<!-- I. CONTACT -->
+<section class="sec" id="contact" aria-labelledby="ctTitle">
+  <div class="wrap">
+    <p class="eyebrow" data-i18n="ct.eyebrow">Contact &amp; join</p>
+    <h2 class="h2" id="ctTitle" data-i18n-html="ct.title">Join <em>the build.</em></h2>
+    <div class="contact-grid">
+      <div>
+        <p class="lede" data-i18n="ct.intro">Students, mentors, sponsors and collaborators: tell us who you are and what you have in mind.</p>
+        <div class="paths" id="paths"></div>
+        <dl class="channels" id="channels" style="margin-top:32px"></dl>
+      </div>
+      <div>
+        <form id="form" novalidate>
+          <div class="field"><label for="f-name" data-i18n="f.name">Name</label><input id="f-name" name="name" autocomplete="name" required><div class="err" id="e-name" aria-live="polite"></div></div>
+          <div class="field"><label for="f-email" data-i18n="f.email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required><div class="err" id="e-email" aria-live="polite"></div></div>
+          <fieldset class="field"><legend data-i18n="f.who">I am a…</legend><div class="who-pick" id="whoPick"></div></fieldset>
+          <div class="field"><label for="f-msg" data-i18n="f.msg">Message</label><textarea id="f-msg" name="message" required></textarea><div class="err" id="e-msg" aria-live="polite"></div></div>
+          <div><button class="btn" type="submit"><span data-i18n="f.submit">Prepare message</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>
+        </form>
+        <div class="ready" id="ready" hidden tabindex="-1">
+          <p style="font-weight:600" id="readyText"></p>
+          <pre id="readyMsg"></pre>
+          <div class="row"><button class="btn" type="button" id="copyBtn"></button><a class="btn ghost" id="mailBtn" hidden></a><button class="btn ghost" type="button" id="editBtn"></button></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- J. FOOTER -->
+<canvas class="band" aria-hidden="true"></canvas>
+<footer>
+  <div class="wrap">
+    <div class="foot-giant" aria-hidden="true">ANTIOCH <em>RISING</em></div>
+    <div class="foot-grid">
+      <div class="foot-id">
+        <img src="assets/logo/logo-192.webp" width="84" height="84" alt="Antioch Rising crest" loading="lazy">
+        <p data-i18n="foot.id">FIRST Robotics Competition Team 10947 · Hatay Fen Lisesi · Hatay, Türkiye</p>
+      </div>
+      <div><h4 data-i18n="foot.explore">Explore</h4><ul>
+        <li><a href="#identity" data-i18n="nav.identity">Identity</a></li><li><a href="#robot" data-i18n="nav.robot">Robot</a></li><li><a href="#process" data-i18n="nav.process">Process</a></li><li><a href="#team" data-i18n="nav.team">Team</a></li></ul></div>
+      <div><h4 data-i18n="foot.involved">Get involved</h4><ul>
+        <li><a href="#impact" data-i18n="nav.impact">Impact</a></li><li><a href="#sponsors" data-i18n="nav.sponsors">Sponsors</a></li><li><a href="#season" data-i18n="nav.season">Season</a></li><li><a href="#contact" data-i18n="nav.contact">Contact</a></li></ul></div>
+      <div><h4 data-i18n="foot.records">Records</h4><ul>
+        <li><a href="https://frc-events.firstinspires.org/team/10947" target="_blank" rel="noopener">FRC Events ↗</a></li>
+        <li><a href="https://www.thebluealliance.com/team/10947/2027" target="_blank" rel="noopener">The Blue Alliance ↗</a></li>
+        <li><a href="https://www.firstinspires.org/" target="_blank" rel="noopener">FIRST ↗</a></li></ul></div>
+    </div>
+    <div class="fine">
+      <span>© 2026 Antioch Rising · FRC 10947</span>
+      <span data-i18n="foot.tm">FIRST® and FIRST® Robotics Competition are registered trademarks of FIRST®. This is the team’s independent website.</span>
+      <button class="top-btn" type="button" id="toTop"><span data-i18n="foot.top">Back to top</span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 20V4M6 10l6-6 6 6"/></svg></button>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* =====================================================================
+   CONTENT — edit this block to update the site. Every field has EN + TR.
+   Leave a value empty ("" or []) and the page shows a designed pending state.
+   ===================================================================== */
+const CONTENT = {
+  contact: {
+    email: "antiochrising@gmail.com",
+    instagram: "antiochrising10947",  // handle without @
+  },
+  robots: [
+    { id:"2026", label:"2026 · REBUILT™", game:"REBUILT™ presented by Haas",
+      name:"",                         // robot name, if any
+      // Photos: base name of files published beside the page (<base>-1600.webp, -800.webp, -240.webp).
+      // pos = which part of the photo stays in view when it is cropped (CSS object-position).
+      photos:[
+        { src:"assets/robot/robot-2", w:1600, h:1066, pos:"50% 60%",
+          alt:{en:"The 2026 robot from the front: black lattice frame and clear side panels on maroon 10947 bumpers",
+               tr:"2026 robotu önden: bordo 10947 tamponları üzerinde siyah kafes gövde ve şeffaf yan paneller"} },
+        { src:"assets/robot/robot-3", w:1600, h:900, pos:"32% 62%",
+          alt:{en:"The 2026 robot in blue 10947 bumpers on the REBUILT field, with people watching behind the field wall",
+               tr:"Mavi 10947 tamponlarıyla 2026 robotu REBUILT sahasında; saha duvarının arkasında izleyenler"} }
+      ],
+      hotspots:[],                     // [{x:42,y:60,label:{en,tr},text:{en,tr}}] — x/y in % of the first photo
+      status:{en:"Competed · Marmara Regional, Istanbul",tr:"Yarıştı · Marmara Regional, İstanbul"},
+      empty:{t:{en:"Robot photography coming soon",tr:"Robot fotoğrafları yakında"},
+             p:{en:"Studio shots and mechanism close-ups of our 2026 robot will appear here.",tr:"2026 robotumuzun stüdyo çekimleri ve mekanizma detayları burada yer alacak."}},
+      specs:{ drivetrain:"", weight:"", frame:"", motors:"", software:"", mechanism:"" } },
+    { id:"2027", label:"2027 · BIOCORE™", game:"BIOCORE™ presented by Haas",
+      name:"", photo:"", photoAlt:{en:"",tr:""}, hotspots:[],
+      status:{en:"Design begins at kickoff · January 2027",tr:"Tasarım sezon açılışında başlıyor · Ocak 2027"},
+      empty:{t:{en:"Revealed after build season",tr:"Yapım sezonundan sonra tanıtılacak"},
+             p:{en:"Our 2027 robot takes shape after kickoff. Follow the process below.",tr:"2027 robotumuz kickoff’tan sonra şekillenecek. Süreci aşağıdan takip edin."}},
+      specs:{ drivetrain:"", weight:"", frame:"", motors:"", software:"", mechanism:"" } }
+  ],
+  team: [ // members: [{name:"", role:{en,tr}}]
+    { cls:"mech", t:{en:"Mechanical",tr:"Mekanik"}, p:{en:"Design, build and maintain the robot’s structure and mechanisms.",tr:"Robotun gövdesini ve mekanizmalarını tasarlar, üretir ve bakımını yapar."}, members:[] },
+    { cls:"soft", t:{en:"Software",tr:"Yazılım"}, p:{en:"Write the robot code, autonomous routines and driver controls.",tr:"Robot kodunu, otonom rutinleri ve sürücü kontrollerini yazar."}, members:[] },
+    { cls:"pr", t:{en:"PR",tr:"PR"}, p:{en:"The team’s voice: social media, visual design, outreach and events.",tr:"Takımın sesi: sosyal medya, görsel tasarım, tanıtım ve etkinlikler."}, members:[] }
+  ],
+  outreach: [], // [{date:"2026-11-15", t:{en,tr}, place:{en,tr}}]
+  sponsors: [ // tier: "emblema" (main) | "grant" | "tessera"; logo: file published beside the page, e.g. "ayider.svg"
+    { name:"AYİDER", tier:"emblema", logo:"", url:"" },
+    { name:"RTX", tier:"grant", logo:"", url:"" },
+    { name:"Rockwell Automation", tier:"grant", logo:"", url:"" }
+  ],
+  timeline: [
+    { date:{en:"2026",tr:"2026"}, t:{en:"Rookie season",tr:"Çaylak sezon"}, p:{en:"Antioch Rising joins FIRST Robotics Competition as Team 10947 in the REBUILT™ season.",tr:"Antioch Rising, REBUILT™ sezonunda FIRST Robotics Competition’a 10947 numaralı takım olarak katılıyor."} },
+    { date:{en:"28–30 Mar 2026",tr:"28–30 Mart 2026"}, cls:"win", t:{en:"Marmara Regional, Istanbul",tr:"Marmara Regional, İstanbul"}, p:{en:"Our first event. We competed and won the Team Spirit Award.",tr:"İlk etkinliğimiz. Yarıştık ve Team Spirit Award kazandık."}, chip:{en:"Award",tr:"Ödül"} },
+    { date:{en:"2027",tr:"2027"}, t:{en:"Second season: BIOCORE™",tr:"İkinci sezon: BIOCORE™"}, p:{en:"Registered for the 2027 BIOCORE™ season presented by Haas.",tr:"Haas sunumlu 2027 BIOCORE™ sezonuna kayıtlıyız."} },
+    { date:{en:"2–4 Apr 2027",tr:"2–4 Nisan 2027"}, cls:"next", t:{en:"Haliç Regional, Istanbul",tr:"Haliç Regional, İstanbul"}, p:{en:"Türkiye Atletizm Federasyonu Atletizm Salonu, Bakırköy.",tr:"Türkiye Atletizm Federasyonu Atletizm Salonu, Bakırköy."}, chip:{en:"Upcoming",tr:"Yaklaşıyor"} }
+  ],
+  nextEvent: "2027-04-02T09:00:00+03:00"
+};
+
+const I18N = {
+  en:{
+    skip:"Skip to content", menu:"Menu", close:"Close", scroll:"Scroll",
+    "nav.identity":"Identity","nav.robot":"Robot","nav.process":"Process","nav.team":"Team","nav.impact":"Impact","nav.sponsors":"Sponsors","nav.season":"Season","nav.contact":"Contact",
+    "hero.eyebrow":"FIRST® Robotics Competition · Team 10947",
+    "hero.title":"Rising, <em>piece by piece.</em>",
+    "hero.lede":"Antioch Rising is the FIRST Robotics Competition team of Hatay Fen Lisesi. We design, build and program competition robots the way Antioch’s mosaicists worked: one precise piece at a time.",
+    "hero.cta1":"Explore the robot","hero.cta2":"Meet the team",
+    "hero.logoAlt":"Antioch Rising crest: a phoenix in terracotta and gold mosaic tiles rising between olive branches, with the words Antioch Rising 10947",
+    "facts.rookie":"Rookie year","facts.school":"School","facts.home":"Home","facts.next":"Next event",
+    "cd.days":n=>`2–4 Apr 2027 · in ${n} days`,"cd.now":"2–4 Apr 2027 · this week","cd.past":"2–4 Apr 2027",
+    "id.eyebrow":"Our identity",
+    "id.statement":"Antioch has always made great things out of <em>small pieces.</em>",
+    "id.body":"The phoenix on our crest is laid in tesserae, the small stone tiles of the mosaics Antioch is famous for. We took the name and the method. A robot is thousands of small decisions, each one measured, tested and set in place by a team that rises together.",
+    "id.origin":"Founded around 300 BC on the Orontes, today’s Antakya.",
+    "v1.t":"Precision","v1.p":"We model, measure and test before we cut. Small tolerances decide matches.",
+    "v2.t":"One crew","v2.p":"Mechanical, software and PR work as one crew. A mosaic only holds when every tile does.",
+    "v3.t":"Gracious Professionalism®","v3.p":"We compete hard and help other teams along the way. That is the FIRST way, and ours.",
+    "robot.eyebrow":"Meet the robot","robot.title":"Built for <em>the field.</em>","robot.season":"Season",
+    "spec.name":"Robot name","spec.drivetrain":"Drivetrain","spec.weight":"Weight","spec.frame":"Frame perimeter","spec.motors":"Motors","spec.software":"Control software","spec.mechanism":"Signature mechanism",
+    "spec.pending":"To be confirmed","robot.gallery":"Robot photos","robot.show":(i,n)=>`Show photo ${i} of ${n}`,"robot.note":"We only publish specs we have verified. Fields fill in as the team confirms them.","robot.game":"Game",
+    "proc.eyebrow":"Engineering process","proc.title":"From blank page <em>to the field.</em>","proc.stage":"Stage",
+    "team.eyebrow":"The team","team.title":"The crew <em>behind the robot.</em>","team.note":"Our 2027 roster is being finalized. Names, roles and portraits will appear here as the season starts.","team.soon":"Roster coming soon",
+    "impact.eyebrow":"Impact & outreach","impact.title":"Robotics should be within reach of <em>every student in Hatay.</em>",
+    "impact.body":"We are a young team, and we are building our outreach the way we build robots: on purpose and on the record. Every activity we run will be logged here with the date, the place and who it reached.",
+    "impact.cta":"Invite us to your school","impact.log":"Outreach log","impact.logEmpty":"First entries arrive this season.",
+    "sp.eyebrow":"Sponsors & partners","sp.title":"Set a piece <em>in the mosaic.</em>",
+    "sp.body":"Sponsors fund parts, tools, event registration and travel. Partners appear here at a size that matches their level of support.",
+    "sp.foot":"Tier names come from mosaic craft: the emblema is the central panel of a mosaic, and a tessera is a single tile.",
+    "sp.cta":"Become a sponsor","sp.open":"Open",
+    "tier.emblema":"Main sponsor","tier.grant":"Grants received","tier.tessera":"Supporter","tierName.emblema":"Emblema","tierName.grant":"Grant partners","tierName.tessera":"Tessera",
+    "season.eyebrow":"Season & achievements","season.title":"The record <em>so far.</em>","season.award":"Our first award, earned at our first event in our rookie season.","season.awardLink":"View on FRC Events ↗","season.source":"Results verified on",
+    "ct.eyebrow":"Contact & join","ct.title":"Join <em>the build.</em>","ct.intro":"Students, mentors, sponsors and collaborators: tell us who you are and what you have in mind.",
+    "f.name":"Name","f.email":"Email","f.who":"I am a…","f.msg":"Message","f.submit":"Prepare message",
+    "e.name":"Enter your name.","e.email":"Enter a valid email address, like name@example.com.","e.msg":"Write a short message.",
+    "r.text":"Your message is ready. Copy it and send it to the team.","r.textMail":"Your message is ready. Send it by email or copy it.","r.copy":"Copy message","r.copied":"Copied","r.copyFail":"Select the text above to copy it","r.mail":"Open email app","r.edit":"Edit",
+    "ch.school":"School","ch.email":"Email","ch.ig":"Instagram","ch.records":"Records","ch.pending":"To be added","ch.copy":"Copy",
+    "foot.id":"FIRST Robotics Competition Team 10947 · Hatay Fen Lisesi · Hatay, Türkiye","foot.explore":"Explore","foot.involved":"Get involved","foot.records":"Records","foot.top":"Back to top",
+    "foot.tm":"FIRST® and FIRST® Robotics Competition are registered trademarks of FIRST®. This is the team’s independent website."
+  },
+  tr:{
+    skip:"İçeriğe geç", menu:"Menü", close:"Kapat", scroll:"Kaydır",
+    "nav.identity":"Kimlik","nav.robot":"Robot","nav.process":"Süreç","nav.team":"Ekip","nav.impact":"Etki","nav.sponsors":"Sponsorlar","nav.season":"Sezon","nav.contact":"İletişim",
+    "hero.eyebrow":"FIRST® Robotics Competition · Takım 10947",
+    "hero.title":"Parça parça <em>yükseliyoruz.</em>",
+    "hero.lede":"Antioch Rising, Hatay Fen Lisesi’nin FIRST Robotics Competition takımı. Yarışma robotlarımızı Antakya’nın mozaik ustaları gibi tasarlıyor, üretiyor ve programlıyoruz: her parçayı özenle yerine koyarak.",
+    "hero.cta1":"Robotu keşfet","hero.cta2":"Ekiple tanış",
+    "hero.logoAlt":"Antioch Rising arması: zeytin dalları arasında yükselen, toprak ve altın tonlu mozaik taşlarından bir anka kuşu ve Antioch Rising 10947 yazısı",
+    "facts.rookie":"İlk sezon","facts.school":"Okul","facts.home":"Şehir","facts.next":"Sıradaki etkinlik",
+    "cd.days":n=>`2–4 Nisan 2027 · ${n} gün kaldı`,"cd.now":"2–4 Nisan 2027 · bu hafta","cd.past":"2–4 Nisan 2027",
+    "id.eyebrow":"Kimliğimiz",
+    "id.statement":"Antakya, büyük eserlerini hep <em>küçük parçalardan</em> yaptı.",
+    "id.body":"Armamızdaki anka kuşu, Antakya’yı ünlü kılan mozaiklerin küçük taşlarıyla, tesseralarla döşendi. Biz de hem adı hem de yöntemi aldık. Bir robot binlerce küçük karardan oluşur; her biri ölçülür, test edilir ve birlikte yükselen bir ekip tarafından yerine konur.",
+    "id.origin":"MÖ 300 civarında Asi Nehri kıyısında kuruldu; bugünkü Antakya.",
+    "v1.t":"Hassasiyet","v1.p":"Kesmeden önce modelliyor, ölçüyor ve test ediyoruz. Maçları küçük toleranslar belirler.",
+    "v2.t":"Tek ekip","v2.p":"Mekanik, yazılım ve PR tek bir ekip olarak çalışır. Mozaik ancak her taş yerinde durursa ayakta kalır.",
+    "v3.t":"Duyarlı Profesyonellik","v3.p":"Sıkı rekabet eder, yol boyunca diğer takımlara yardım ederiz. FIRST’ün yolu bu, bizimki de.",
+    "robot.eyebrow":"Robotla tanış","robot.title":"Saha için <em>tasarlandı.</em>","robot.season":"Sezon",
+    "spec.name":"Robot adı","spec.drivetrain":"Sürüş sistemi","spec.weight":"Ağırlık","spec.frame":"Şasi çevresi","spec.motors":"Motorlar","spec.software":"Kontrol yazılımı","spec.mechanism":"Öne çıkan mekanizma",
+    "spec.pending":"Doğrulanacak","robot.gallery":"Robot fotoğrafları","robot.show":(i,n)=>`${n} fotoğraftan ${i}. fotoğrafı göster`,"robot.note":"Yalnızca doğrulanmış teknik bilgileri yayınlıyoruz. Alanlar ekip onayladıkça dolacak.","robot.game":"Oyun",
+    "proc.eyebrow":"Mühendislik süreci","proc.title":"Boş sayfadan <em>sahaya.</em>","proc.stage":"Aşama",
+    "team.eyebrow":"Ekip","team.title":"Robotun <em>arkasındaki ekip.</em>","team.note":"2027 kadromuz netleşiyor. İsimler, görevler ve portreler sezon başladıkça burada yer alacak.","team.soon":"Kadro yakında",
+    "impact.eyebrow":"Etki ve topluluk","impact.title":"Robotik, <em>Hatay’daki her öğrencinin</em> ulaşabileceği bir yerde olmalı.",
+    "impact.body":"Genç bir takımız ve topluluk çalışmalarımızı robot yapar gibi kuruyoruz: planlı ve kayıtlı. Düzenlediğimiz her etkinlik tarih, yer ve ulaştığı kişilerle birlikte burada yer alacak.",
+    "impact.cta":"Bizi okulunuza davet edin","impact.log":"Etkinlik kaydı","impact.logEmpty":"İlk girişler bu sezon geliyor.",
+    "sp.eyebrow":"Sponsorlar ve destekçiler","sp.title":"Mozaiğe <em>bir taş koyun.</em>",
+    "sp.body":"Sponsorlar parça, alet, etkinlik kaydı ve ulaşım masraflarını karşılar. Destekçilerimiz burada katkı düzeyine uygun boyutta yer alır.",
+    "sp.foot":"Kademe adları mozaik sanatından gelir: emblema mozaiğin merkezindeki pano, tessera ise tek bir taştır.",
+    "sp.cta":"Sponsor olun","sp.open":"Açık",
+    "tier.emblema":"Ana sponsor","tier.grant":"Aldığımız hibeler","tier.tessera":"Destekçi","tierName.emblema":"Emblema","tierName.grant":"Hibe destekçileri","tierName.tessera":"Tessera",
+    "season.eyebrow":"Sezon ve başarılar","season.title":"Şimdiye kadarki <em>kayıt.</em>","season.award":"Çaylak sezonumuzda, ilk etkinliğimizde kazandığımız ilk ödül.","season.awardLink":"FRC Events’te görüntüle ↗","season.source":"Sonuçların kaynağı",
+    "ct.eyebrow":"İletişim ve katılım","ct.title":"Yapıma <em>katıl.</em>","ct.intro":"Öğrenciler, mentorlar, sponsorlar ve iş birlikçiler: kim olduğunuzu ve aklınızdakini bize anlatın.",
+    "f.name":"Ad soyad","f.email":"E-posta","f.who":"Ben bir…","f.msg":"Mesaj","f.submit":"Mesajı hazırla",
+    "e.name":"Adınızı girin.","e.email":"Geçerli bir e-posta adresi girin, örneğin ad@ornek.com.","e.msg":"Kısa bir mesaj yazın.",
+    "r.text":"Mesajınız hazır. Kopyalayıp takıma gönderin.","r.textMail":"Mesajınız hazır. E-postayla gönderin ya da kopyalayın.","r.copy":"Mesajı kopyala","r.copied":"Kopyalandı","r.copyFail":"Kopyalamak için yukarıdaki metni seçin","r.mail":"E-posta uygulamasını aç","r.edit":"Düzenle",
+    "ch.school":"Okul","ch.email":"E-posta","ch.ig":"Instagram","ch.records":"Kayıtlar","ch.pending":"Eklenecek","ch.copy":"Kopyala",
+    "foot.id":"FIRST Robotics Competition Takım 10947 · Hatay Fen Lisesi · Hatay, Türkiye","foot.explore":"Keşfet","foot.involved":"Katıl","foot.records":"Kayıtlar","foot.top":"Başa dön",
+    "foot.tm":"FIRST® ve FIRST® Robotics Competition, FIRST®’ün tescilli markalarıdır. Bu site takımın bağımsız web sitesidir."
+  }
+};
+
+const STAGES = [
+  {t:{en:"Concept",tr:"Konsept"}, p:{en:"Kickoff reveals the game. We read the manual line by line, break down scoring and decide what the robot must do well.",tr:"Kickoff’ta oyun açıklanır. Kural kitabını satır satır okur, puanlamayı çözümler ve robotun neyi iyi yapması gerektiğine karar veririz."}, tags:{en:["Game manual","Strategy","Sketches"],tr:["Kural kitabı","Strateji","Eskizler"]}},
+  {t:{en:"CAD",tr:"CAD"}, p:{en:"Ideas become assemblies. Every part is modelled and every clearance checked before any material is touched.",tr:"Fikirler montajlara dönüşür. Malzemeye dokunmadan önce her parça modellenir, her boşluk kontrol edilir."}, tags:{en:["Assemblies","Tolerances","Design review"],tr:["Montajlar","Toleranslar","Tasarım incelemesi"]}},
+  {t:{en:"Prototype",tr:"Prototip"}, p:{en:"We build fast and rough to learn what works: wood, polycarbonate, zip ties and quick tests.",tr:"Neyin işe yaradığını öğrenmek için hızlı ve kaba üretiriz: ahşap, polikarbonat, kelepçe ve hızlı testler."}, tags:{en:["Rapid builds","Mechanism tests","Iteration"],tr:["Hızlı üretim","Mekanizma testleri","İterasyon"]}},
+  {t:{en:"Fabrication",tr:"Üretim"}, p:{en:"Proven designs are cut, drilled and assembled into the competition robot.",tr:"Kanıtlanan tasarımlar kesilir, delinir ve yarışma robotuna monte edilir."}, tags:{en:["Cutting","Machining","Assembly"],tr:["Kesim","Talaşlı imalat","Montaj"]}},
+  {t:{en:"Programming",tr:"Yazılım"}, p:{en:"Code turns the machine into a robot: driver controls, autonomous routines and sensors.",tr:"Kod, makineyi robota dönüştürür: sürücü kontrolleri, otonom rutinler ve sensörler."}, tags:{en:["Teleop","Autonomous","Sensors"],tr:["Teleop","Otonom","Sensörler"]}},
+  {t:{en:"Testing",tr:"Test"}, p:{en:"Drive practice and tuning. We break things on purpose and fix them before an event does it for us.",tr:"Sürüş antrenmanı ve ayar. Bir şeyleri bilerek kırar, etkinlik bizim yerimize kırmadan tamir ederiz."}, tags:{en:["Drive practice","Tuning","Reliability"],tr:["Sürüş antrenmanı","Ayar","Güvenilirlik"]}},
+  {t:{en:"Competition",tr:"Yarışma"}, p:{en:"Pit crew, scouting and match strategy, played out over three days on the field alongside other teams.",tr:"Pit ekibi, scouting ve maç stratejisi; diğer takımlarla birlikte üç gün boyunca sahada."}, tags:{en:["Pit","Scouting","Matches"],tr:["Pit","Scouting","Maçlar"]}}
+];
+const OFFERS = [
+  {c:"var(--ember)", t:{en:"School visits & robot demos",tr:"Okul ziyaretleri ve robot gösterileri"}, p:{en:"Invite us and we bring the robot to your classroom and show how it was built.",tr:"Bizi davet edin; robotu sınıfınıza getirip nasıl yapıldığını gösterelim."}},
+  {c:"var(--ochre)", t:{en:"Intro workshops",tr:"Tanışma atölyeleri"}, p:{en:"Hands-on sessions on design, wiring and code for students meeting engineering for the first time.",tr:"Mühendislikle ilk kez tanışan öğrenciler için tasarım, kablolama ve kod üzerine uygulamalı oturumlar."}},
+  {c:"var(--laurel)", t:{en:"Support for new teams",tr:"Yeni takımlara destek"}, p:{en:"Advice and an extra pair of hands for schools in the region starting their own FIRST team.",tr:"Bölgede kendi FIRST takımını kuran okullara tavsiye ve destek."}}
+];
+const PATHS = [
+  {k:"student", t:{en:"Student",tr:"Öğrenci"}, p:{en:"Ask about joining a subteam",tr:"Bir alt ekibe katılmayı sorun"}},
+  {k:"mentor", t:{en:"Mentor",tr:"Mentor"}, p:{en:"Share engineering or teaching skills",tr:"Mühendislik ya da eğitim bilginizi paylaşın"}},
+  {k:"sponsor", t:{en:"Sponsor",tr:"Sponsor"}, p:{en:"Fund the season",tr:"Sezonu destekleyin"}},
+  {k:"school", t:{en:"School or partner",tr:"Okul veya iş birliği"}, p:{en:"Visits, workshops, collaboration",tr:"Ziyaret, atölye, iş birliği"}}
+];
+
+/* ===================================================================== */
+const $ = (s,r=document)=>r.querySelector(s), $$ = (s,r=document)=>[...r.querySelectorAll(s)];
+const esc = s => String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const fine = matchMedia('(pointer:fine)').matches;
+let lang = 'en';
+try{ lang = localStorage.getItem('ar-lang') || ((navigator.language||'').toLowerCase().startsWith('tr') ? 'tr' : 'en'); }catch(e){ lang = (navigator.language||'').toLowerCase().startsWith('tr') ? 'tr' : 'en'; }
+const T = k => { const v = I18N[lang][k]; return v===undefined ? I18N.en[k] : v; };
+const L = o => (o && (o[lang] || o.en)) || '';
+
+/* ---------- i18n ---------- */
+function splitWords(el){
+  const walk = node => {
+    [...node.childNodes].forEach(n=>{
+      if(n.nodeType===3){
+        const frag=document.createDocumentFragment();
+        n.textContent.split(/(\s+)/).forEach(part=>{
+          if(!part) return;
+          if(/^\s+$/.test(part)){frag.appendChild(document.createTextNode(part));return;}
+          const w=document.createElement('span');w.className='w';
+          const i=document.createElement('span');i.textContent=part;w.appendChild(i);frag.appendChild(w);
+        });
+        n.replaceWith(frag);
+      } else if(n.nodeType===1) walk(n);
+    });
+  };
+  walk(el);
+  $$('.w>span',el).forEach((s,i)=>s.style.setProperty('--i',i));
+}
+function applyLang(){
+  document.documentElement.lang = lang;
+  $$('[data-i18n]').forEach(el=>{ const v=T(el.dataset.i18n); if(typeof v==='string') el.textContent=v; });
+  $$('[data-i18n-html]').forEach(el=>{ el.innerHTML=T(el.dataset.i18nHtml); });
+  $$('[data-i18n-alt]').forEach(el=>{ el.alt=T(el.dataset.i18nAlt); });
+  $$('.lang button').forEach(b=>b.setAttribute('aria-pressed', String(b.dataset.lang===lang)));
+  $('#seasonTabs').setAttribute('aria-label', T('robot.season'));
+  splitWords($('#heroTitle'));
+  renderAll();
+  requestAnimationFrame(moveTick);
+}
+$$('.lang button').forEach(b=>b.addEventListener('click',()=>{
+  lang=b.dataset.lang; try{localStorage.setItem('ar-lang',lang)}catch(e){}
+  applyLang();
+}));
+
+/* ---------- countdown ---------- */
+function countdown(){
+  const days = Math.ceil((new Date(CONTENT.nextEvent) - new Date())/864e5);
+  const el=$('#countdown');
+  el.textContent = days>7 ? T('cd.days')(days) : days>=-2 ? T('cd.now') : T('cd.past');
+}
+
+/* ---------- robot ---------- */
+let robotIdx = 0, photoIdx = 0;
+const SPEC_KEYS=['drivetrain','weight','frame','motors','software','mechanism'];
+function renderRobot(){
+  const tabs=$('#seasonTabs');
+  tabs.innerHTML = CONTENT.robots.map((r,i)=>`<button role="tab" id="rt-${r.id}" aria-controls="robotPanel" aria-selected="${i===robotIdx}" tabindex="${i===robotIdx?0:-1}">${esc(r.label)}</button>`).join('');
+  $$('button',tabs).forEach((b,i)=>{
+    b.onclick=()=>{robotIdx=i;photoIdx=0;renderRobot();$$('#seasonTabs button')[i].focus();};
+    b.onkeydown=e=>{ if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();photoIdx=0;robotIdx=(robotIdx+(e.key==='ArrowRight'?1:-1)+CONTENT.robots.length)%CONTENT.robots.length;renderRobot();$$('#seasonTabs button')[robotIdx].focus();} };
+  });
+  const r=CONTENT.robots[robotIdx], panel=$('#robotPanel');
+  panel.setAttribute('aria-labelledby','rt-'+r.id);
+  const photos = r.photos || [];
+  if(photoIdx >= photos.length) photoIdx = 0;
+  const two = n => String(n).padStart(2,'0');
+  const srcset = p => `${esc(p.src)}-800.webp 800w, ${esc(p.src)}-1600.webp 1600w`;
+  const photo = photos.length
+    ? `<img class="robot-photo" id="robotPhoto" src="${esc(photos[photoIdx].src)}-1600.webp" srcset="${srcset(photos[photoIdx])}" sizes="(min-width:900px) 60vw, 100vw" width="${+photos[photoIdx].w}" height="${+photos[photoIdx].h}" style="object-position:${esc(photos[photoIdx].pos||'50% 50%')}" alt="${esc(L(photos[photoIdx].alt))}" loading="lazy" decoding="async"><div class="shade" aria-hidden="true"></div>${photoIdx===0?(r.hotspots||[]).map((h,i)=>`<button class="hotspot" style="left:${+h.x}%;top:${+h.y}%" aria-expanded="false" data-h="${i}" aria-label="${esc(L(h.label))}"></button>`).join(''):''}`
+    : `<div class="frame-empty"><img class="ph" src="assets/logo/logo-192.webp" alt="" width="132" height="134"><strong>${esc(L(r.empty.t))}</strong><p>${esc(L(r.empty.p))}</p></div>`;
+  const thumbs = photos.length > 1
+    ? `<div class="thumbs" style="--n:${photos.length}" role="group" aria-label="${esc(T('robot.gallery'))}">${photos.map((p,i)=>`<button type="button" data-p="${i}" aria-pressed="${i===photoIdx}" aria-label="${esc(T('robot.show')(i+1,photos.length))}"><img src="${esc(p.src)}-240.webp" alt="" width="240" height="${Math.round(240*p.h/p.w)}" loading="lazy" style="object-position:${esc(p.pos||'50% 50%')}"></button>`).join('')}</div>`
+    : '';
+  const specRows = [['name',r.name]].concat(SPEC_KEYS.map(k=>[k,r.specs[k]]))
+    .map(([k,v])=>`<div><dt>${esc(T('spec.'+k))}</dt><dd>${v?esc(typeof v==='object'?L(v):v):`<span class="pending">${esc(T('spec.pending'))}</span>`}</dd></div>`).join('');
+  panel.innerHTML = `
+    <div class="robot-media" data-reveal>
+    <div class="frame${photos.length?' has-photo':''}">${photo}<i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      <div class="frame-meta" aria-hidden="true"><span>FRC 10947 · ${esc(r.id)}</span><span id="photoCount">${photos.length?two(photoIdx+1)+' / '+two(photos.length):esc(r.game.split(' ')[0])}</span></div></div>
+    ${thumbs}</div>
+    <div class="robot-side" data-reveal style="--d:.1s">
+      <p class="robot-status">${esc(L(r.status))}</p>
+      <h3>${esc(r.label)}</h3>
+      <p class="game">${esc(T('robot.game'))}: ${esc(r.game)}</p>
+      <dl class="specs">${specRows}</dl>
+      <p class="robot-note">${esc(T('robot.note'))}</p>
+    </div>`;
+  $$('.hotspot',panel).forEach(b=>b.onclick=()=>{
+    $$('.hotspot-pop',panel).forEach(p=>p.remove());
+    const open=b.getAttribute('aria-expanded')==='true';
+    $$('.hotspot',panel).forEach(x=>x.setAttribute('aria-expanded','false'));
+    if(open) return;
+    const h=r.hotspots[+b.dataset.h], pop=document.createElement('div');
+    pop.className='hotspot-pop'; pop.setAttribute('role','status');
+    pop.innerHTML=`<strong>${esc(L(h.label))}</strong><p style="margin-top:6px;color:var(--cream-dim)">${esc(L(h.text))}</p>`;
+    pop.style.left=Math.min(+h.x,60)+'%'; pop.style.top=(+h.y+6)+'%';
+    b.after(pop); b.setAttribute('aria-expanded','true');
+  });
+  $$('.thumbs button',panel).forEach(b=>b.onclick=()=>{
+    const i=+b.dataset.p; if(i===photoIdx) return;
+    photoIdx=i; renderRobot();
+    const nb=$(`#robotPanel .thumbs button[data-p="${i}"]`); if(nb) nb.focus();
+  });
+  observeReveals(panel);
+}
+
+/* ---------- process ---------- */
+let stageIdx = 0;
+function renderSteps(){
+  const wrap=$('#steps');
+  wrap.innerHTML = STAGES.map((s,i)=>`<button role="tab" id="st-${i}" aria-controls="stage" aria-selected="${i===stageIdx}" tabindex="${i===stageIdx?0:-1}"><b>${String(i+1).padStart(2,'0')}</b><span>${esc(L(s.t))}</span></button>`).join('');
+  $$('button',wrap).forEach((b,i)=>{
+    b.onclick=()=>selectStage(i,false);
+    b.onkeydown=e=>{
+      const k=e.key; let n=null;
+      if(k==='ArrowDown'||k==='ArrowRight') n=(stageIdx+1)%STAGES.length;
+      if(k==='ArrowUp'||k==='ArrowLeft') n=(stageIdx-1+STAGES.length)%STAGES.length;
+      if(k==='Home') n=0; if(k==='End') n=STAGES.length-1;
+      if(n!==null){e.preventDefault();selectStage(n,true);}
+    };
+  });
+  renderStage(false);
+}
+function selectStage(i,focus){
+  stageIdx=i;
+  $$('#steps button').forEach((b,j)=>{b.setAttribute('aria-selected',String(j===i));b.tabIndex=j===i?0:-1;});
+  const b=$$('#steps button')[i]; if(focus) b.focus();
+  b.scrollIntoView({block:'nearest',inline:'nearest',behavior:reduce?'auto':'smooth'});
+  renderStage(true);
+}
+function renderStage(anim){
+  const s=STAGES[stageIdx], st=$('#stage');
+  st.setAttribute('aria-labelledby','st-'+stageIdx);
+  st.innerHTML=`<div class="stage-num" aria-hidden="true">${String(stageIdx+1).padStart(2,'0')}</div>
+    <div><p class="mono" style="color:var(--ochre)">${esc(T('proc.stage'))} ${stageIdx+1} / ${STAGES.length}</p><h3 style="margin-top:14px">${esc(L(s.t))}</h3><p>${esc(L(s.p))}</p></div>
+    <div style="display:grid;gap:22px"><ul class="tags">${L(s.tags).map(t=>`<li>${esc(t)}</li>`).join('')}</ul>
+    <div class="track" aria-hidden="true">${STAGES.map((_,j)=>`<i class="${j<stageIdx?'done':j===stageIdx?'on':''}"></i>`).join('')}</div></div>`;
+  if(anim){st.classList.remove('swap');void st.offsetWidth;st.classList.add('swap');}
+}
+
+/* ---------- team / impact / sponsors / season / contact ---------- */
+function renderTeam(){
+  $('#mosaic').innerHTML = CONTENT.team.map((g,i)=>`
+    <article class="cell ${g.cls}" data-reveal style="--d:${(i%3)*.06}s">
+      <div class="tess" aria-hidden="true">${'<i></i>'.repeat(i===0?36:(i%2?4:8))}</div>
+      <div><h3>${esc(L(g.t))}</h3><p>${esc(L(g.p))}</p></div>
+      <div class="who">${g.members.length ? g.members.map(m=>`<span>${esc(m.name)}${m.role?' · '+esc(L(m.role)):''}</span>`).join('') : esc(T('team.soon'))}</div>
+    </article>`).join('');
+}
+function renderImpact(){
+  $('#offers').innerHTML = OFFERS.map((o,i)=>`<li data-reveal style="--d:${i*.08}s"><i class="sq" style="--c:${o.c}" aria-hidden="true"></i><div><h3>${esc(L(o.t))}</h3><p>${esc(L(o.p))}</p></div></li>`).join('');
+  const log=$('#log');
+  const fmt=d=>new Intl.DateTimeFormat(lang==='tr'?'tr-TR':'en-GB',{day:'numeric',month:'short',year:'numeric'}).format(new Date(d));
+  log.innerHTML = `<p class="mono" style="color:var(--ochre)">${esc(T('impact.log'))}</p>` + (CONTENT.outreach.length
+    ? CONTENT.outreach.map(o=>`<div class="log-entry"><time class="mono" datetime="${esc(o.date)}">${esc(fmt(o.date))}</time><div><b>${esc(L(o.t))}</b><div style="color:var(--cream-dim);font-size:.9rem">${esc(L(o.place))}</div></div></div>`).join('')
+    : `<p style="color:var(--cream-dim);font-size:.95rem">${esc(T('impact.logEmpty'))}</p>`);
+}
+function renderSponsors(){
+  const tiers=[['emblema','t1',1],['grant','t2',2],['tessera','t3',4]];
+  $('#tiers').innerHTML = tiers.map(([k,cls,n],i)=>{
+    const list=CONTENT.sponsors.filter(s=>s.tier===k);
+    const label=T('tierName.'+k);
+    const slots = list.length
+      ? list.map(s=>{const inner=s.logo?`<img src="${esc(s.logo)}" alt="${esc(s.name)}" loading="lazy">`:`<span class="wordmark">${esc(s.name)}</span>`;
+          return s.url?`<a class="slot" href="${esc(s.url)}" target="_blank" rel="noopener">${inner}</a>`:`<div class="slot">${inner}</div>`;}).join('')
+      : Array.from({length:n},()=>`<a class="slot" href="#contact" data-topic="sponsor">${esc(T('sp.open'))}</a>`).join('');
+    return `<div class="tier ${cls}" data-reveal style="--d:${i*.08}s"><div class="tier-label"><h3>${esc(label)}</h3><span>${esc(T('tier.'+k))}</span></div><div class="slots">${slots}</div></div>`;
+  }).join('');
+}
+function renderTimeline(){
+  $('#timeline').innerHTML = CONTENT.timeline.map(e=>`<li class="${e.cls||''}" data-reveal><time>${esc(L(e.date))}</time><h3>${esc(L(e.t))}${e.chip?`<span class="chip">${esc(L(e.chip))}</span>`:''}</h3><p>${esc(L(e.p))}</p></li>`).join('');
+}
+let who='student';
+function renderContact(){
+  $('#paths').innerHTML = PATHS.map(p=>`<button type="button" data-topic="${p.k}"><b>${esc(L(p.t))}</b><span>${esc(L(p.p))}</span></button>`).join('');
+  $('#whoPick').innerHTML = PATHS.map(p=>`<label><input type="radio" name="who" value="${p.k}" ${p.k===who?'checked':''}><span>${esc(L(p.t))}</span></label>`).join('');
+  $$('#whoPick input').forEach(i=>i.onchange=()=>{who=i.value;});
+  const c=CONTENT.contact, pend=`<span class="pending">${esc(T('ch.pending'))}</span>`;
+  $('#channels').innerHTML = `
+    <div><dt>${esc(T('ch.school'))}</dt><dd>Hatay Fen Lisesi · Hatay, Türkiye</dd></div>
+    <div><dt>${esc(T('ch.email'))}</dt><dd>${c.email?`<span style="user-select:all">${esc(c.email)}</span>`:pend}</dd></div>
+    <div><dt>${esc(T('ch.ig'))}</dt><dd>${c.instagram?`<a class="textlink" href="https://instagram.com/${esc(c.instagram)}" target="_blank" rel="noopener">@${esc(c.instagram)}</a>`:pend}</dd></div>
+    <div><dt>${esc(T('ch.records'))}</dt><dd><a class="textlink" href="https://frc-events.firstinspires.org/team/10947" target="_blank" rel="noopener">FRC Events</a> · <a class="textlink" href="https://www.thebluealliance.com/team/10947/2027" target="_blank" rel="noopener">The Blue Alliance</a></dd></div>`;
+  $('#copyBtn').textContent=T('r.copy'); $('#editBtn').textContent=T('r.edit'); $('#mailBtn').textContent=T('r.mail');
+}
+document.addEventListener('click',e=>{
+  const t=e.target.closest('[data-topic]'); if(!t) return;
+  who=t.dataset.topic;
+  const inp=$(`#whoPick input[value="${who}"]`); if(inp) inp.checked=true;
+  if(t.tagName==='BUTTON' && !t.closest('#contact')){ $('#contact').scrollIntoView({behavior:reduce?'auto':'smooth'}); }
+  setTimeout(()=>$('#f-name').focus({preventScroll:true}),reduce?0:700);
+});
+
+/* form: validates, then composes a ready-to-send message (no fake submission) */
+let composed='';
+$('#form').addEventListener('submit',e=>{
+  e.preventDefault();
+  const name=$('#f-name').value.trim(), email=$('#f-email').value.trim(), msg=$('#f-msg').value.trim();
+  const errs={name:!name&&T('e.name'), email:!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)&&T('e.email'), msg:!msg&&T('e.msg')};
+  $('#e-name').textContent=errs.name||''; $('#e-email').textContent=errs.email||''; $('#e-msg').textContent=errs.msg||'';
+  $('#f-name').setAttribute('aria-invalid',!!errs.name); $('#f-email').setAttribute('aria-invalid',!!errs.email); $('#f-msg').setAttribute('aria-invalid',!!errs.msg);
+  const first=['name','email','msg'].find(k=>errs[k]); if(first){ $('#f-'+first).focus(); return; }
+  const role=L(PATHS.find(p=>p.k===who).t);
+  composed = (lang==='tr'?`Konu: Antioch Rising 10947 — ${role}\n\nAd: ${name}\nE-posta: ${email}\n\n${msg}`:`Subject: Antioch Rising 10947 — ${role}\n\nName: ${name}\nEmail: ${email}\n\n${msg}`);
+  $('#readyMsg').textContent=composed;
+  const em=CONTENT.contact.email;
+  $('#readyText').textContent = em?T('r.textMail'):T('r.text');
+  const mb=$('#mailBtn'); mb.hidden=!em;
+  if(em) mb.href=`mailto:${encodeURIComponent(em)}?subject=${encodeURIComponent('Antioch Rising 10947 — '+role)}&body=${encodeURIComponent(msg+'\n\n'+name+' · '+email)}`;
+  $('#form').hidden=true; $('#ready').hidden=false; $('#ready').focus();
+});
+$('#editBtn').onclick=()=>{ $('#ready').hidden=true; $('#form').hidden=false; $('#f-msg').focus(); };
+$('#copyBtn').onclick=()=>{
+  const b=$('#copyBtn');
+  const sel=()=>{const r=document.createRange();r.selectNodeContents($('#readyMsg'));const s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent=T('r.copyFail');};
+  try{ navigator.clipboard.writeText(composed).then(()=>{b.textContent=T('r.copied');setTimeout(()=>b.textContent=T('r.copy'),2200);},sel); }catch(err){ sel(); }
+};
+
+function renderAll(){ countdown(); renderRobot(); renderSteps(); renderTeam(); renderImpact(); renderSponsors(); renderTimeline(); renderContact(); observeReveals(document); }
+
+/* ---------- reveals ---------- */
+const revealIO = 'IntersectionObserver' in window ? new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('is-in'); revealIO.unobserve(e.target);} }),{rootMargin:'0px 0px 8% 0px'}) : null;
+function observeReveals(root){
+  if(!revealIO || reduce) return;
+  $$('[data-reveal]:not(.is-in)',root).forEach(el=>{
+    const r=el.getBoundingClientRect();
+    if(r.top < innerHeight && r.bottom > 0) { el.classList.add('seen'); return; } // already on screen: stay put
+    revealIO.observe(el);
+  });
+}
+
+/* ---------- nav: scrolled state, progress, active section, menu ---------- */
+const nav=$('#nav'), prog=$('#progress');
+let ticking=false;
+addEventListener('scroll',()=>{ if(ticking) return; ticking=true; requestAnimationFrame(()=>{
+  const y=scrollY, h=document.documentElement.scrollHeight-innerHeight;
+  nav.classList.toggle('scrolled', y>24);
+  prog.style.setProperty('--p', h>0? (y/h).toFixed(4):0);
+  ticking=false; }); },{passive:true});
+let activeId=null;
+function moveTick(){
+  const tick=$('.links .tick'); const a=activeId && $(`.links a[href="#${activeId}"]`);
+  $$('.links a').forEach(x=>x.removeAttribute('aria-current'));
+  if(!a || !a.offsetParent){ tick.style.opacity=0; return; }
+  a.setAttribute('aria-current','true');
+  tick.style.setProperty('--x', (a.parentElement.offsetLeft + a.offsetWidth/2 - 3.5)+'px'); tick.style.opacity=1;
+}
+if('IntersectionObserver' in window){
+  const secIO=new IntersectionObserver(es=>{ es.forEach(e=>{ if(e.isIntersecting){ activeId=e.target.id; moveTick(); } }); },{rootMargin:'-45% 0px -50% 0px'});
+  ['top','identity','robot','process','team','impact','sponsors','season','contact'].forEach(id=>secIO.observe(document.getElementById(id)));
+}
+const sheet=$('#sheet'), openB=$('#menuOpen');
+function openMenu(){ sheet.hidden=false; openB.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; $('#menuClose').focus(); }
+function closeMenu(focus=true){ sheet.hidden=true; openB.setAttribute('aria-expanded','false'); document.body.style.overflow=''; if(focus) openB.focus(); }
+openB.onclick=openMenu; $('#menuClose').onclick=()=>closeMenu();
+$$('[data-close]',sheet).forEach(a=>a.addEventListener('click',()=>closeMenu(false)));
+sheet.addEventListener('keydown',e=>{
+  if(e.key==='Escape') closeMenu();
+  if(e.key==='Tab'){ const f=$$('a,button',sheet); const first=f[0], last=f[f.length-1];
+    if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();} else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();} }
+});
+$('#toTop').onclick=()=>{ scrollTo({top:0,behavior:reduce?'auto':'smooth'}); $('.brand').focus({preventScroll:true}); };
+addEventListener('resize',()=>requestAnimationFrame(moveTick));
+
+/* ---------- hero medallion: tesserae assemble from below, then the real crest takes over ---------- */
+(function medallion(){
+  const logo=$('#logo'), cv=$('#tiles'), stage=$('#medalStage'), medal=$('#medal');
+  const reveal=()=>{ logo.classList.remove('pre'); cv.style.opacity=0; };
+  if(reduce){ reveal(); cv.remove(); return; }
+  const safety=setTimeout(reveal,3200);
+  const img=new Image(); img.src=logo.src;
+  const start=()=>{
+    const S=medal.clientWidth, H=medal.clientHeight; if(!S){reveal();return;}
+    const dpr=Math.min(devicePixelRatio||1,2); cv.width=S*dpr; cv.height=H*dpr;
+    const ctx=cv.getContext('2d'); ctx.scale(dpr,dpr);
+    const cols=S<420?34:46, cell=S/cols, rows=Math.round(H/cell);
+    const off=document.createElement('canvas'); off.width=cols; off.height=rows;
+    const o=off.getContext('2d'); o.drawImage(img,0,0,cols,rows);
+    let data; try{ data=o.getImageData(0,0,cols,rows).data; }catch(e){ reveal(); return; }
+    const tiles=[];
+    for(let r=0;r<rows;r++) for(let c=0;c<cols;c++){
+      const k=(r*cols+c)*4; if(data[k+3]<140) continue;
+      const tx=(c+.5)*cell+(Math.random()-.5)*cell*.18, ty=(r+.5)*cell+(Math.random()-.5)*cell*.18;
+      tiles.push({tx,ty,col:`rgb(${data[k]},${data[k+1]},${data[k+2]})`,s:cell*(.78+Math.random()*.14),rot:(Math.random()-.5)*.22,
+        sx:tx+(Math.random()-.5)*S*.6, sy:H*1.1+Math.random()*H*.5, sr:(Math.random()-.5)*3,
+        d:(1-r/rows)*720+Math.random()*260});
+    }
+    const DUR=820, t0=performance.now(), ease=t=>1-Math.pow(1-t,3);
+    let handed=false;
+    const frame=now=>{
+      const el=now-t0; ctx.clearRect(0,0,S,H); let done=true;
+      for(const t of tiles){
+        let p=(el-t.d)/DUR; if(p<1) done=false; if(p<=0) continue; p=Math.min(p,1);
+        const e=ease(p), x=t.sx+(t.tx-t.sx)*e, y=t.sy+(t.ty-t.sy)*e, a=t.sr+(t.rot-t.sr)*e;
+        ctx.globalAlpha=Math.min(1,p*3); ctx.fillStyle=t.col;
+        ctx.setTransform(dpr*Math.cos(a),dpr*Math.sin(a),-dpr*Math.sin(a),dpr*Math.cos(a),x*dpr,y*dpr);
+        ctx.fillRect(-t.s/2,-t.s/2,t.s,t.s);
+      }
+      ctx.setTransform(dpr,0,0,dpr,0,0);
+      if(!handed && el>1500){ handed=true; logo.classList.remove('pre'); }
+      if(!done) requestAnimationFrame(frame); else { clearTimeout(safety); cv.style.opacity=0; setTimeout(()=>cv.remove(),700); }
+    };
+    requestAnimationFrame(frame);
+  };
+  (img.decode?img.decode():new Promise((res,rej)=>{img.onload=res;img.onerror=rej;})).then(start,reveal);
+
+  if(fine){ // gentle tilt + raking light
+    let tx=0,ty=0,cx=0,cy=0,raf=null;
+    const loop=()=>{ cx+=(tx-cx)*.08; cy+=(ty-cy)*.08;
+      medal.style.setProperty('--rx',(-cy*7).toFixed(2)+'deg'); medal.style.setProperty('--ry',(cx*9).toFixed(2)+'deg');
+      raf = (Math.abs(tx-cx)+Math.abs(ty-cy)>.001)? requestAnimationFrame(loop):null; };
+    stage.addEventListener('pointermove',e=>{ const b=medal.getBoundingClientRect();
+      const px=(e.clientX-b.left)/b.width, py=(e.clientY-b.top)/b.height;
+      tx=px-.5; ty=py-.5; medal.style.setProperty('--mx',(px*100)+'%'); medal.style.setProperty('--my',(py*100)+'%');
+      if(!raf) raf=requestAnimationFrame(loop); });
+    stage.addEventListener('pointerleave',()=>{ tx=0; ty=0; if(!raf) raf=requestAnimationFrame(loop); });
+  }
+})();
+
+/* ---------- hero embers: tiny tesserae rising through warm haze ---------- */
+(function embers(){
+  const cv=$('#embers'); if(reduce){ cv.remove(); return; }
+  const ctx=cv.getContext('2d'); let W,H,dpr,parts=[],run=false,raf;
+  const COLS=['#dc7c2e','#d6a65a','#9e4a24','#ead6a9'];
+  const size=()=>{ dpr=Math.min(devicePixelRatio||1,2); W=cv.clientWidth; H=cv.clientHeight; cv.width=W*dpr; cv.height=H*dpr; ctx.setTransform(dpr,0,0,dpr,0,0);
+    const n=W<700?22:56; parts=Array.from({length:n},()=>mk(true)); };
+  const mk=init=>({x:W*(.35+Math.random()*.7),y:init?Math.random()*H:H+10,v:.15+Math.random()*.45,s:1.5+Math.random()*3,c:COLS[Math.random()*4|0],a:.15+Math.random()*.5,w:Math.random()*6.28,r:Math.random()*6.28});
+  const tick=()=>{ ctx.clearRect(0,0,W,H);
+    for(const p of parts){ p.y-=p.v; p.w+=.01; p.x+=Math.sin(p.w)*.25; p.r+=.004;
+      if(p.y<-10) Object.assign(p,mk(false));
+      const fade=Math.min(1,p.y/(H*.35)); ctx.globalAlpha=p.a*fade; ctx.fillStyle=p.c;
+      ctx.save(); ctx.translate(p.x,p.y); ctx.rotate(p.r); ctx.fillRect(-p.s/2,-p.s/2,p.s,p.s); ctx.restore(); }
+    if(run) raf=requestAnimationFrame(tick); };
+  size(); addEventListener('resize',()=>{ clearTimeout(cv._t); cv._t=setTimeout(size,200); });
+  const set=on=>{ if(on&&!run){run=true;raf=requestAnimationFrame(tick);} if(!on){run=false;cancelAnimationFrame(raf);} };
+  new IntersectionObserver(es=>set(es[0].isIntersecting&&!document.hidden)).observe($('#top'));
+  document.addEventListener('visibilitychange',()=>set(!document.hidden && $('#top').getBoundingClientRect().bottom>0));
+})();
+
+/* ---------- tile bands: the crest's border, laid tile by tile as it scrolls in ---------- */
+(function bands(){
+  const ROWS=[['#3b3c2d','#34352a','#43443a','#2f3025'],['#9e4a24','#8a3d1c','#b05a2c','#7b3517'],['#3b3c2d','#34352a','#43443a','#2f3025']];
+  const T=7,G=2;
+  const draw=(cv,prog)=>{
+    const W=cv.clientWidth, dpr=Math.min(devicePixelRatio||1,2);
+    if(cv.width!==Math.round(W*dpr)){ cv.width=Math.round(W*dpr); cv.height=27*dpr; cv._seed=null; }
+    const cols=Math.ceil(W/(T+G));
+    if(!cv._seed) cv._seed=Array.from({length:cols*3},()=>[Math.random(),(Math.random()-.5)*1.2,(Math.random()-.5)*.14]);
+    const ctx=cv.getContext('2d'); ctx.setTransform(dpr,0,0,dpr,0,0); ctx.clearRect(0,0,W,27);
+    for(let r=0;r<3;r++) for(let c=0;c<cols;c++){
+      const sd=cv._seed[r*cols+c]; const t=Math.max(0,Math.min(1,(prog*(cols+18)-c-r*3)/18)); if(t<=0) continue;
+      const e=1-Math.pow(1-t,3); ctx.globalAlpha=e; ctx.fillStyle=ROWS[r][sd[0]*4|0];
+      ctx.save(); ctx.translate(c*(T+G)+T/2+sd[1], r*(T+3)+T/2 - (1-e)*8); ctx.rotate(sd[2]); ctx.fillRect(-T/2,-T/2,T,T); ctx.restore();
+    }
+  };
+  $$('canvas.band').forEach(cv=>{
+    cv.classList.add('live');
+    if(reduce || !('IntersectionObserver' in window)){ draw(cv,1); return; }
+    const io=new IntersectionObserver(es=>{ if(!es[0].isIntersecting) return; io.disconnect();
+      const t0=performance.now(); const f=n=>{ const p=Math.min(1,(n-t0)/1100); draw(cv,p); if(p<1) requestAnimationFrame(f); }; requestAnimationFrame(f); });
+    io.observe(cv); draw(cv,0);
+    cv._done=()=>draw(cv,1);
+  });
+  addEventListener('resize',()=>{ clearTimeout(bands._t); bands._t=setTimeout(()=>$$('canvas.band').forEach(cv=>{cv._seed=null;draw(cv,1);}),200); });
+})();
+
+/* ---------- award panel: a quiet field of tesserae ---------- */
+(function awardTiles(){
+  const cv=$('#awardTiles'); const draw=()=>{
+    const W=cv.clientWidth,H=cv.clientHeight,dpr=Math.min(devicePixelRatio||1,2); if(!W) return;
+    cv.width=W*dpr; cv.height=H*dpr; const ctx=cv.getContext('2d'); ctx.scale(dpr,dpr);
+    const s=18, P=['#a9542a','#b45d2e','#97461f','#8a3d1c','#c06a33','#7b3517'];
+    for(let y=0;y<H;y+=s) for(let x=0;x<W;x+=s){
+      const d=Math.hypot(x-W*.85,y-H*.15)/Math.max(W,H); ctx.fillStyle=d<.32&&Math.random()<.5?'#dc7c2e':P[Math.random()*P.length|0];
+      ctx.save(); ctx.translate(x+s/2+(Math.random()-.5)*2,y+s/2+(Math.random()-.5)*2); ctx.rotate((Math.random()-.5)*.12); ctx.fillRect(-s/2+1,-s/2+1,s-2,s-2); ctx.restore(); }
+  };
+  draw(); addEventListener('resize',()=>{ clearTimeout(cv._t); cv._t=setTimeout(draw,200); });
+})();
+
+applyLang();
+</script>
+</body>
+</html>
