@@ -246,6 +246,14 @@ section{position:relative}
 .specs div{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;padding:14px 0;border-bottom:1px solid var(--line);align-items:baseline}
 .specs dt{color:var(--cream-dim);font-size:.95rem}
 .specs dd{margin:0;font:600 1.05rem/1.2 var(--display);text-align:right}
+.highlights{margin:28px 0 0;display:grid}
+.highlights div{display:flex;flex-direction:column-reverse;gap:4px;padding:16px 0;border-bottom:1px solid var(--line)}
+.highlights div:first-child{border-top:1px solid var(--line)}
+.highlights dd{margin:0;font:600 clamp(1.5rem,1.2rem + 1vw,2rem)/1.1 var(--display);color:var(--cream)}
+.highlights div:last-child dd{color:var(--ember)}
+.highlights dt{color:var(--cream-dim);font-size:.92rem}
+.robot-video{margin-top:28px}
+.robot-video svg{width:14px;height:14px}
 .robot-note{margin-top:20px;font-size:.88rem;color:var(--cream-dim);max-width:52ch}
 @media (min-width:900px){.robot-grid{grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);align-items:start}}
 
@@ -863,6 +871,10 @@ const CONTENT = {
       ],
       hotspots:[],                     // [{x:42,y:60,label:{en,tr},text:{en,tr}}] — x/y in % of the first photo
       status:{en:"Competed · Marmara Regional, Istanbul",tr:"Yarıştı · Marmara Regional, İstanbul"},
+      highlights:[ {v:{en:"Playoffs",tr:"Playoff"}, l:{en:"Reached in our rookie season",tr:"Çaylak sezonumuzda yükseldik"}},
+                   {v:{en:"Quarterfinals",tr:"Çeyrek final"}, l:{en:"At our first event",tr:"İlk yarışmamızda"}},
+                   {v:{en:"Team Spirit Award",tr:"Team Spirit Award"}, l:{en:"Marmara Regional 2026",tr:"Marmara Regional 2026"}} ],
+      video:{ url:"https://youtu.be/jS5CYsE92ts", label:{en:"Watch Qualification 65 ↗",tr:"Qualification 65’i izleyin ↗"} },
       empty:{t:{en:"Robot photography coming soon",tr:"Robot fotoğrafları yakında"},
              p:{en:"Studio shots and mechanism close-ups of our 2026 robot will appear here.",tr:"2026 robotumuzun stüdyo çekimleri ve mekanizma detayları burada yer alacak."}},
       specs:{ drivetrain:"", weight:"", frame:"", motors:"", software:"", mechanism:"" } },
@@ -1157,8 +1169,9 @@ function renderRobot(){
   const thumbs = photos.length > 1
     ? `<div class="thumbs" style="--n:${photos.length}" role="group" aria-label="${esc(T('robot.gallery'))}">${photos.map((p,i)=>`<button type="button" data-p="${i}" aria-pressed="${i===photoIdx}" aria-label="${esc(T('robot.show')(i+1,photos.length))}"><img src="${esc(p.src)}-240.webp" alt="" width="240" height="${Math.round(240*p.h/p.w)}" loading="lazy" style="object-position:${esc(p.pos||'50% 50%')}"></button>`).join('')}</div>`
     : '';
-  const specRows = [['name',r.name]].concat(SPEC_KEYS.map(k=>[k,r.specs[k]]))
-    .map(([k,v])=>`<div><dt>${esc(T('spec.'+k))}</dt><dd>${v?esc(typeof v==='object'?L(v):v):`<span class="pending">${esc(T('spec.pending'))}</span>`}</dd></div>`).join('');
+  // Only filled-in specs are shown; with none, the table is left out.
+  const specRows = [['name',r.name]].concat(SPEC_KEYS.map(k=>[k,r.specs[k]])).filter(([k,v])=>v)
+    .map(([k,v])=>`<div><dt>${esc(T('spec.'+k))}</dt><dd>${esc(typeof v==='object'?L(v):v)}</dd></div>`).join('');
   panel.innerHTML = `
     <div class="robot-media" data-reveal>
     <div class="frame${photos.length?' has-photo':''}">${photo}<i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
@@ -1168,8 +1181,9 @@ function renderRobot(){
       <p class="robot-status">${esc(L(r.status))}</p>
       <h3>${esc(r.label)}</h3>
       <p class="game">${esc(T('robot.game'))}: ${esc(r.game)}</p>
-      <dl class="specs">${specRows}</dl>
-      <p class="robot-note">${esc(T('robot.note'))}</p>
+      ${(r.highlights||[]).length?`<dl class="highlights">${r.highlights.map(h=>`<div><dt>${esc(L(h.l))}</dt><dd>${esc(L(h.v))}</dd></div>`).join('')}</dl>`:''}
+      ${specRows?`<dl class="specs">${specRows}</dl>`:''}
+      ${r.video?`<a class="btn ghost robot-video" href="${esc(r.video.url)}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg><span>${esc(L(r.video.label))}</span></a>`:''}
     </div>`;
   $$('.hotspot',panel).forEach(b=>b.onclick=()=>{
     $$('.hotspot-pop',panel).forEach(p=>p.remove());
