@@ -16,6 +16,7 @@ assets/sponsors/      Sponsor logoları (eklendikçe)
 `index.html` dosyasını açın (GitHub'da dosyaya tıklayıp kalem simgesiyle de düzenleyebilirsiniz). Metinler iki yerde durur:
 
 - **`const CONTENT`**: Değişen bilgiler. E-posta ve Instagram, robotlar (fotoğraflar, teknik özellikler), ekipler ve üyeleri, sponsorlar, sezon geçmişi, sıradaki etkinlik tarihi.
+- **`GOALS`, `TRAININGS`, `STATS`, `PROJECTS`, `PLAN`, `PACKAGES`, `BUDGET`**: Hedefler, eğitimler, etki rakamları, topluluk projeleri, 2027 planı, sponsorluk paketleri ve sezon bütçesi.
 - **`const I18N`**: Sitedeki diğer tüm yazılar (başlıklar, butonlar, paragraflar). `en` ve `tr` olarak iki liste vardır; bir yazıyı değiştirirken iki dildeki karşılığını da güncelleyin.
 
 Her metin `{en:"...", tr:"..."}` şeklindedir. Tırnak işaretlerini ve virgülleri silmemeye dikkat edin.
@@ -32,10 +33,10 @@ Ekibe üye eklemek (`CONTENT.team` içinde):
 Sponsor logosu eklemek: logoyu `assets/sponsors/` klasörüne yükleyin (şeffaf PNG ya da SVG), sonra `CONTENT.sponsors` içinde ilgili satıra yolunu yazın:
 
 ```js
-{ name:"AYİDER", tier:"emblema", logo:"assets/sponsors/ayider.svg", url:"https://..." }
+{ name:"AYİDER", tier:"main", logo:"assets/sponsors/ayider.png", url:"https://...", role:{en:"Transport and robot equipment", tr:"Ulaşım ve robot ekipmanı"} }
 ```
 
-`tier`: `"emblema"` ana sponsor, `"grant"` hibe destekçisi, `"tessera"` destekçi.
+`tier`: `"main"` ana sponsor, `"sponsor"` sponsor, `"grant"` hibe veren kurum. Logosu olmayan sponsorun adı yazı olarak görünür.
 
 Robot teknik özellikleri: `CONTENT.robots` içinde `specs` alanlarını doldurun. Boş bırakılan alan sitede "Doğrulanacak" olarak görünür.
 
