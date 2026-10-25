@@ -12,6 +12,7 @@
 <script>document.documentElement.classList.add('js');</script>
 <style>
 body{margin:0}
+[hidden]{display:none!important}
 /* Layout concept: a mosaic floor at night. Content sits on a 12-column "grout" grid; tile bands
    (from the crest's slate + terracotta border) separate sections; the phoenix medallion is the light source. */
 :root{
@@ -363,6 +364,135 @@ a.slot:hover{box-shadow:inset 0 0 0 1px var(--ochre);color:var(--cream)}
 .source{font-size:.88rem;color:var(--cream-dim);display:flex;flex-wrap:wrap;gap:6px 18px}
 @media (min-width:900px){.season-grid{grid-template-columns:minmax(0,1fr) minmax(0,1.15fr)}.award{position:sticky;top:calc(var(--navh) + 32px)}}
 
+/* ---------- GOALS ---------- */
+.goals-eyebrow{margin-top:clamp(48px,6vw,88px)}
+.values.goals{margin-top:24px}
+@media (min-width:900px){
+  .values.goals{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .values.goals li,.values.goals li+li{padding:32px 32px 36px 0}
+  .values.goals li:nth-child(2n){padding-left:32px}
+}
+@media (min-width:1200px){
+  .values.goals{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .values.goals li:nth-child(n+2){padding-left:28px}
+  .values.goals li{padding-right:28px}
+}
+.values.goals h3{font-size:clamp(1.5rem,1.2rem + 1vw,1.9rem)}
+
+/* ---------- TRAININGS ---------- */
+.trainings{margin-top:clamp(48px,6vw,88px);display:grid;gap:24px}
+.train-grid{display:grid;gap:3px;grid-template-columns:minmax(0,1fr);background:var(--line)}
+.train{background:var(--night);padding:28px 0;display:grid;gap:14px;align-content:start}
+.train h3{font-size:var(--s3)}
+.train p{color:var(--cream-dim);max-width:52ch}
+.train .train-tag{color:var(--ochre)}
+.train .train-with{color:var(--cream);margin-top:auto}
+@media (min-width:900px){
+  .train-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .train{padding:32px 32px 32px 0}.train+.train{padding-left:32px}
+}
+
+/* ---------- TEAM PHOTO ---------- */
+.team-photo{margin:clamp(32px,4vw,56px) 0 0;position:relative;aspect-ratio:4/3;overflow:hidden;background:var(--night-2);max-width:100%}
+.team-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 45%}
+.team-photo::after{content:"";position:absolute;inset:auto 0 0;height:30%;background:linear-gradient(to top,rgba(19,18,13,.6),rgba(19,18,13,0));pointer-events:none}
+.team-photo+.mosaic{margin-top:3px}
+@media (min-width:900px){.team-photo{aspect-ratio:21/9}}
+
+/* ---------- IMPACT ---------- */
+.stats{margin:clamp(40px,5vw,72px) 0 0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-top:1px solid var(--line)}
+.stats div{padding:20px 16px 0 0;display:flex;flex-direction:column-reverse;gap:6px;min-width:0}
+.stats dd{margin:0;font:600 clamp(2.4rem,1.6rem + 3vw,4.4rem)/1 var(--display);color:var(--ember);font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.stats dt{color:var(--cream-dim);font-size:.95rem}
+@media (min-width:900px){.stats{grid-template-columns:repeat(5,minmax(0,1fr))}.stats div{padding:24px 24px 0 0;border-right:1px solid var(--line);margin-right:24px}.stats div:last-child{border-right:0;margin-right:0}}
+.stats-note{margin-top:16px;font-size:.85rem;color:var(--cream-dim)}
+.projects{display:grid;gap:3px;margin-top:clamp(40px,5vw,72px);grid-template-columns:minmax(0,1fr);background:var(--night-2)}
+.project{background:var(--night);display:grid;grid-template-rows:auto 1fr;min-width:0}
+.project figure{margin:0;aspect-ratio:4/3;overflow:hidden;background:var(--slate);max-width:100%}
+.project img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+.project:hover img{transform:scale(1.03)}
+.project-body{padding:24px 24px 28px;display:grid;gap:12px;align-content:start}
+.project h3{font-size:clamp(1.5rem,1.2rem + 1vw,2rem)}
+.project p{color:var(--cream-dim);max-width:56ch}
+.project .project-tag{color:var(--ochre)}
+.project .project-note{color:var(--cream);font:500 .78rem/1.4 var(--mono);letter-spacing:.08em;text-transform:uppercase;display:flex;gap:10px;align-items:center}
+.project .project-note::before{content:"";width:8px;height:8px;background:var(--ember);flex:none}
+@media (min-width:700px){.projects{grid-template-columns:repeat(2,minmax(0,1fr))}.project.xl{grid-column:1/-1}}
+@media (min-width:1100px){
+  .projects{grid-template-columns:repeat(12,minmax(0,1fr))}
+  .project.xl{grid-column:1/8;grid-template-rows:1fr auto}
+  .project.xl figure{aspect-ratio:auto;min-height:420px}
+  .project.tall{grid-column:8/13}
+  .project.tall figure{aspect-ratio:auto;min-height:420px}
+  .project.m{grid-column:span 4}
+  .project.half{grid-column:span 6}
+  .project.half figure{aspect-ratio:16/9}
+}
+.plan{margin-top:clamp(48px,6vw,88px);display:grid;gap:28px;grid-template-columns:minmax(0,1fr);padding-top:32px;border-top:1px solid var(--line)}
+.plan-title{font:600 clamp(2rem,1.4rem + 2.4vw,3.4rem)/1.02 var(--display);margin-top:16px;letter-spacing:-.02em}
+.plan-title em{font-style:italic;font-weight:500;color:var(--ember)}
+.plan-body{display:grid;gap:28px;align-content:start}
+.plan-list{list-style:none;margin:0;padding:0;display:grid}
+.plan-list li{display:grid;grid-template-columns:auto minmax(0,1fr);gap:16px;padding:14px 0;border-bottom:1px solid var(--line);color:var(--cream)}
+.plan-list li::before{content:"";width:10px;height:10px;margin-top:8px;background:var(--ochre);transform:rotate(45deg)}
+.plan-body .btn{justify-self:start}
+@media (min-width:900px){.plan{grid-template-columns:minmax(0,1fr) minmax(0,1.3fr)}}
+
+/* ---------- SPONSOR SLOTS ---------- */
+.tier .slots{--n:1}
+.tier.t1 .slots{--ar:3/1}.tier.t2 .slots{--ar:3/1}.tier.t3 .slots{--ar:3/2}
+@media (min-width:900px){.tier.t2 .slots{--ar:4/1}}
+.tier.t3 .slots{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media (min-width:700px){.tier.t3 .slots{grid-template-columns:repeat(var(--n),minmax(0,1fr))}}
+.slot{position:relative;flex-direction:column;gap:10px}
+.slot.has-logo{background:var(--cream);box-shadow:none}
+.slot.has-logo img{width:auto;height:auto;max-height:clamp(44px,4.4vw,60px);max-width:72%}
+.slot-cap{font:500 .68rem/1.3 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--cream-dim)}
+.tier.t2 .slot .wordmark{font-size:clamp(1.6rem,1rem + 2.2vw,3rem)}
+
+/* ---------- PACKAGES ---------- */
+.packages-wrap{margin-top:clamp(64px,8vw,120px);padding-top:clamp(40px,5vw,64px);border-top:1px solid var(--line)}
+.pk-title{font-size:clamp(2rem,1.3rem + 3vw,4rem)}
+.budget{display:grid;gap:12px;align-content:end}
+.budget .mono{color:var(--ochre)}
+.budget-total{font:600 clamp(2.2rem,1.6rem + 2.4vw,3.6rem)/1 var(--display);font-variant-numeric:tabular-nums}
+.budget-bar{height:14px;background:repeating-linear-gradient(90deg,var(--slate-2) 0 12px,transparent 12px 14px)}
+.budget-bar i{display:block;height:100%;background:repeating-linear-gradient(90deg,var(--ember) 0 12px,transparent 12px 14px)}
+.budget-legend{margin:0;display:flex;flex-wrap:wrap;gap:8px 32px}
+.budget-legend div{display:flex;gap:10px;align-items:baseline}
+.budget-legend dt{color:var(--cream-dim);font-size:.9rem}
+.budget-legend dd{margin:0;font:600 1.15rem/1 var(--display);font-variant-numeric:tabular-nums}
+.budget-legend dd.gap{color:var(--ember)}
+.packages{list-style:none;margin:clamp(32px,4vw,56px) 0 0;padding:0;display:grid;gap:3px;grid-template-columns:minmax(0,1fr);background:var(--line)}
+.pkg{background:var(--night);padding:24px 0;display:grid;gap:16px;align-content:start}
+.pkg-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
+.pkg h4{margin:0;font:600 1.6rem/1 var(--display)}
+.pkg-price{font:500 .95rem/1 var(--mono);color:var(--ember);letter-spacing:.04em}
+.pkg ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.pkg ul li{display:grid;grid-template-columns:auto minmax(0,1fr);gap:10px;color:var(--cream-dim);font-size:.94rem;line-height:1.45}
+.pkg ul li::before{content:"";width:6px;height:6px;margin-top:8px;background:var(--ochre)}
+.pkg-cta{font:500 .75rem/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--cream);text-decoration:none;padding:12px 0;align-self:end}
+.pkg-cta:hover{color:var(--ember)}
+.pkg-bronze h4{color:#c98a5a}.pkg-silver h4{color:#c9c2b0}.pkg-gold h4{color:var(--ochre)}
+.pkg-diamond h4{color:#bcd3cf}.pkg-platinum h4{color:#e3ddd0}.pkg-naming h4{color:var(--ember)}
+@media (min-width:700px){.packages{grid-template-columns:repeat(2,minmax(0,1fr))}.pkg{padding:28px}}
+@media (min-width:1200px){
+  .packages{grid-template-columns:repeat(6,minmax(0,1fr));align-items:end;background:none;gap:6px;padding-top:24px}
+  .pkg{padding:24px 20px;box-shadow:inset 0 0 0 1px var(--line);background:linear-gradient(var(--night-2),var(--night));
+       padding-top:calc(30px + var(--i) * 30px);position:relative;
+       min-height:calc(430px + var(--i) * 46px);display:flex;flex-direction:column;gap:16px}
+  .pkg-cta{margin-top:auto}
+  .pkg::before{content:"";position:absolute;left:0;right:0;top:0;height:calc(10px + var(--i) * 30px);
+       background:repeating-linear-gradient(90deg,var(--terra) 0 12px,transparent 12px 14px) 0 0/100% 10px no-repeat,
+                  repeating-linear-gradient(0deg,rgba(220,124,46,.10) 0 1px,transparent 1px 12px)}
+  .pkg-head{display:grid;gap:8px}
+}
+
+/* ---------- AWARD ---------- */
+.award-chips{list-style:none;margin:20px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.award-chips li{font:500 .7rem/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;padding:9px 11px;box-shadow:inset 0 0 0 1px rgba(245,230,196,.6)}
+.award-links{display:flex;flex-wrap:wrap;gap:12px 24px}
+
 /* ---------- CONTACT ---------- */
 .contact-grid{display:grid;gap:clamp(40px,5vw,80px);margin-top:clamp(32px,4vw,56px);grid-template-columns:minmax(0,1fr)}
 form{display:grid;gap:22px}
@@ -489,9 +619,9 @@ footer{padding-top:clamp(56px,7vw,112px);padding-bottom:calc(32px + env(safe-are
       <a class="btn ghost" href="#team"><span data-i18n="hero.cta2">Meet the team</span></a>
     </div>
     <dl class="facts">
-      <div><dt data-i18n="facts.rookie">Rookie year</dt><dd>2026</dd></div>
-      <div><dt data-i18n="facts.school">School</dt><dd>Hatay Fen Lisesi</dd></div>
-      <div><dt data-i18n="facts.home">Home</dt><dd>Hatay, Türkiye</dd></div>
+      <div><dt data-i18n="facts.founded">Founded</dt><dd data-i18n="facts.foundedV">May 2025</dd></div>
+      <div><dt data-i18n="facts.crew">Team</dt><dd data-i18n="facts.crewV">25 students · 5 mentors</dd></div>
+      <div><dt data-i18n="facts.school">School</dt><dd>Hatay Fen Lisesi<small>Hatay, Türkiye</small></dd></div>
       <div><dt data-i18n="facts.next">Next event</dt><dd>Haliç Regional<small id="countdown">2–4 Apr 2027</small></dd></div>
     </dl>
   </div>
@@ -505,20 +635,18 @@ footer{padding-top:clamp(56px,7vw,112px);padding-bottom:calc(32px + env(safe-are
   <div class="wrap">
     <p class="eyebrow" data-i18n="id.eyebrow">Our identity</p>
     <div class="identity-grid" style="margin-top:28px">
-      <h2 class="statement" id="idTitle" data-reveal data-i18n-html="id.statement">Antioch has always made great things out of <em>small pieces.</em></h2>
+      <h2 class="statement" id="idTitle" data-reveal data-i18n-html="id.statement">We rise <em>from our ashes.</em></h2>
       <div class="identity-body" data-reveal style="--d:.1s">
-        <p data-i18n="id.body">The phoenix on our crest is laid in tesserae, the small stone tiles of the mosaics Antioch is famous for. We took the name and the method. A robot is thousands of small decisions, each one measured, tested and set in place by a team that rises together.</p>
+        <p data-i18n="id.body"></p>
+        <p data-i18n="id.body2"></p>
         <div class="origin">
           <img src="assets/logo/logo-192.webp" width="72" height="72" alt="" loading="lazy">
           <div><b>ANTIOCHIA AD ORONTEM</b><span data-i18n="id.origin">Founded around 300 BC on the Orontes, today’s Antakya.</span></div>
         </div>
       </div>
     </div>
-    <ul class="values">
-      <li data-reveal><div class="glyph" aria-hidden="true"><i style="--c:var(--ember)"></i><i style="--c:var(--ochre)"></i><i style="--c:var(--terra)"></i></div><h3 data-i18n="v1.t">Precision</h3><p data-i18n="v1.p">We model, measure and test before we cut. Small tolerances decide matches.</p></li>
-      <li data-reveal style="--d:.08s"><div class="glyph" aria-hidden="true"><i style="--c:var(--laurel)"></i><i style="--c:var(--cream)"></i><i style="--c:var(--laurel)"></i></div><h3 data-i18n="v2.t">One crew</h3><p data-i18n="v2.p">Mechanical, software and PR work as one crew. A mosaic only holds when every tile does.</p></li>
-      <li data-reveal style="--d:.16s"><div class="glyph" aria-hidden="true"><i style="--c:var(--rust)"></i><i style="--c:var(--ember)"></i><i style="--c:var(--ochre)"></i></div><h3 data-i18n="v3.t">Gracious Professionalism®</h3><p data-i18n="v3.p">We compete hard and help other teams along the way. That is the FIRST way, and ours.</p></li>
-    </ul>
+    <p class="eyebrow goals-eyebrow" data-i18n="goals.eyebrow">Our goals</p>
+    <ul class="values goals" id="goals"></ul>
   </div>
 </section>
 
@@ -547,6 +675,10 @@ footer{padding-top:clamp(56px,7vw,112px);padding-bottom:calc(32px + env(safe-are
       <div class="steps" role="tablist" aria-orientation="vertical" id="steps" aria-labelledby="procTitle"></div>
       <div class="stage" id="stage" role="tabpanel" tabindex="0"></div>
     </div>
+    <div class="trainings">
+      <p class="eyebrow" data-i18n="train.eyebrow">Trainings we received</p>
+      <div class="train-grid" id="trainings"></div>
+    </div>
   </div>
 </section>
 
@@ -560,6 +692,9 @@ footer{padding-top:clamp(56px,7vw,112px);padding-bottom:calc(32px + env(safe-are
       </div>
       <p class="lede" data-i18n="team.note">Our 2027 roster is being finalized. Names, roles and portraits will appear here as the season starts.</p>
     </div>
+    <figure class="team-photo" data-reveal>
+      <img src="assets/photos/team-1200.webp" srcset="assets/photos/team-600.webp 600w, assets/photos/team-1200.webp 1120w" sizes="(min-width:1360px) 1264px, 100vw" width="1120" height="745" loading="lazy" decoding="async" alt="" data-i18n-alt="team.photoAlt">
+    </figure>
     <div class="mosaic" id="mosaic"></div>
   </div>
 </section>
@@ -571,11 +706,16 @@ footer{padding-top:clamp(56px,7vw,112px);padding-bottom:calc(32px + env(safe-are
   <div class="wrap">
     <p class="eyebrow" data-i18n="impact.eyebrow">Impact &amp; outreach</p>
     <h2 class="impact-statement" id="impactTitle" data-reveal data-i18n-html="impact.title">Robotics should be within reach of <em>every student in Hatay.</em></h2>
-    <div class="impact-grid">
-      <ul class="offers" id="offers"></ul>
-      <div class="impact-side" data-reveal>
-        <p data-i18n="impact.body">We are a young team, and we are building our outreach the way we build robots: on purpose and on the record. Every activity we run will be logged here with the date, the place and who it reached.</p>
-        <div class="log" id="log"></div>
+    <dl class="stats" id="stats" data-reveal></dl>
+    <p class="stats-note" data-i18n="impact.statsNote"></p>
+    <div class="projects" id="projects"></div>
+    <div class="plan" data-reveal>
+      <div>
+        <p class="eyebrow" data-i18n="plan.eyebrow">2027 plan</p>
+        <h3 class="plan-title" data-i18n-html="plan.title"></h3>
+      </div>
+      <div class="plan-body">
+        <ul class="plan-list" id="planList"></ul>
         <a class="btn" href="#contact" data-topic="school"><span data-i18n="impact.cta">Invite us to your school</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
     </div>
@@ -595,9 +735,19 @@ footer{padding-top:clamp(56px,7vw,112px);padding-bottom:calc(32px + env(safe-are
       <p class="lede" data-i18n="sp.body">Sponsors fund parts, tools, event registration and travel. Partners appear here at a size that matches their level of support.</p>
     </div>
     <div class="tiers" id="tiers"></div>
-    <div class="sponsor-foot">
-      <p data-i18n="sp.foot">Tier names come from mosaic craft: the emblema is the central panel of a mosaic, and a tessera is a single tile.</p>
-      <a class="btn" href="#contact" data-topic="sponsor"><span data-i18n="sp.cta">Become a sponsor</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    <div class="packages-wrap" id="packages-section">
+      <div class="team-head">
+        <div>
+          <p class="eyebrow" data-i18n="pk.eyebrow">Sponsorship packages</p>
+          <h3 class="h2 pk-title" data-i18n-html="pk.title"></h3>
+        </div>
+        <div class="budget" id="budget" data-reveal></div>
+      </div>
+      <ol class="packages" id="packages"></ol>
+      <div class="sponsor-foot">
+        <p data-i18n="pk.foot"></p>
+        <a class="btn" href="#contact" data-topic="sponsor"><span data-i18n="sp.cta">Become a sponsor</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
     </div>
   </div>
 </section>
@@ -613,13 +763,17 @@ footer{padding-top:clamp(56px,7vw,112px);padding-bottom:calc(32px + env(safe-are
         <p class="mono">FRC · 2026 · REBUILT™ · Marmara Regional</p>
         <div>
           <h3>Team Spirit<br>Award</h3>
-          <p style="margin-top:16px" data-i18n="season.award">Our first award, earned at our first event in our rookie season.</p>
+          <p style="margin-top:16px" data-i18n="season.award"></p>
+          <ul class="award-chips"><li data-i18n="season.chip1">Playoffs</li><li data-i18n="season.chip2">Quarterfinals</li><li data-i18n="season.chip3">Rookie season</li></ul>
         </div>
-        <a class="textlink mono" style="color:#f5e6c4" href="https://frc-events.firstinspires.org/2026/awards?id=678" target="_blank" rel="noopener" data-i18n="season.awardLink">View on FRC Events</a>
+        <div class="award-links">
+          <a class="textlink mono" style="color:#f5e6c4" href="https://youtu.be/jS5CYsE92ts" target="_blank" rel="noopener" data-i18n="season.video">Watch a match ↗</a>
+          <a class="textlink mono" style="color:#f5e6c4" href="https://frc-events.firstinspires.org/2026/awards?id=678" target="_blank" rel="noopener" data-i18n="season.awardLink">View on FRC Events</a>
+        </div>
       </article>
       <div>
         <ol class="timeline" id="timeline"></ol>
-        <p class="source"><span data-i18n="season.source">Results verified on</span><a class="textlink" href="https://frc-events.firstinspires.org/team/10947" target="_blank" rel="noopener">FRC Events</a><a class="textlink" href="https://www.thebluealliance.com/team/10947/2027" target="_blank" rel="noopener">The Blue Alliance</a></p>
+        <p class="source"><span data-i18n="season.source">Award records</span><a class="textlink" href="https://frc-events.firstinspires.org/team/10947" target="_blank" rel="noopener">FRC Events</a><a class="textlink" href="https://www.thebluealliance.com/team/10947/2027" target="_blank" rel="noopener">The Blue Alliance</a></p>
       </div>
     </div>
   </div>
@@ -724,15 +878,21 @@ const CONTENT = {
     { cls:"soft", t:{en:"Software",tr:"Yazılım"}, p:{en:"Write the robot code, autonomous routines and driver controls.",tr:"Robot kodunu, otonom rutinleri ve sürücü kontrollerini yazar."}, members:[] },
     { cls:"pr", t:{en:"PR",tr:"PR"}, p:{en:"The team’s voice: social media, visual design, outreach and events.",tr:"Takımın sesi: sosyal medya, görsel tasarım, tanıtım ve etkinlikler."}, members:[] }
   ],
-  outreach: [], // [{date:"2026-11-15", t:{en,tr}, place:{en,tr}}]
-  sponsors: [ // tier: "emblema" (main) | "grant" | "tessera"; logo: file published beside the page, e.g. "ayider.svg"
-    { name:"AYİDER", tier:"emblema", logo:"", url:"" },
-    { name:"RTX", tier:"grant", logo:"", url:"" },
-    { name:"Rockwell Automation", tier:"grant", logo:"", url:"" }
+  // tier: "main" | "sponsor" | "grant". logo: path to a file in assets/sponsors/ (empty = name shown as text)
+  sponsors: [
+    { name:"AYİDER", tier:"main", logo:"", url:"", role:{en:"Transport and robot equipment",tr:"Ulaşım ve robot ekipmanı"} },
+    { name:"Otel Suadiye", tier:"sponsor", logo:"", url:"", role:{en:"Accommodation in Istanbul",tr:"İstanbul konaklaması"} },
+    { name:"Boeing", tier:"grant", logo:"assets/sponsors/boeing.png", url:"" },
+    { name:"Rockwell Automation", tier:"grant", logo:"assets/sponsors/rockwell-automation.png", url:"" },
+    { name:"RTX", tier:"grant", logo:"assets/sponsors/rtx.png", url:"" },
+    { name:"Fikret Yüksel Eğitim Vakfı", tier:"grant", logo:"assets/sponsors/fikret-yuksel-egitim-vakfi.png", url:"" }
   ],
+  grantsTotal: "$11,000",
   timeline: [
-    { date:{en:"2026",tr:"2026"}, t:{en:"Rookie season",tr:"Çaylak sezon"}, p:{en:"Antioch Rising joins FIRST Robotics Competition as Team 10947 in the REBUILT™ season.",tr:"Antioch Rising, REBUILT™ sezonunda FIRST Robotics Competition’a 10947 numaralı takım olarak katılıyor."} },
-    { date:{en:"28–30 Mar 2026",tr:"28–30 Mart 2026"}, cls:"win", t:{en:"Marmara Regional, Istanbul",tr:"Marmara Regional, İstanbul"}, p:{en:"Our first event. We competed and won the Team Spirit Award.",tr:"İlk etkinliğimiz. Yarıştık ve Team Spirit Award kazandık."}, chip:{en:"Award",tr:"Ödül"} },
+    { date:{en:"May 2025",tr:"Mayıs 2025"}, t:{en:"Antioch Rising is founded",tr:"Antioch Rising kuruldu"}, p:{en:"Students of Hatay Fen Lisesi come together under the STEAM umbrella.",tr:"Hatay Fen Lisesi öğrencileri STEAM çatısı altında bir araya geldi."} },
+    { date:{en:"2026",tr:"2026"}, t:{en:"Rookie season",tr:"Çaylak sezon"}, p:{en:"Antioch Rising competes in FIRST Robotics Competition as Team 10947 in the REBUILT™ season.",tr:"Antioch Rising, REBUILT™ sezonunda FIRST Robotics Competition’da 10947 numaralı takım olarak yarıştı."} },
+    { date:{en:"28–30 Mar 2026",tr:"28–30 Mart 2026"}, cls:"win", t:{en:"Marmara Regional, Istanbul",tr:"Marmara Regional, İstanbul"}, p:{en:"Our first event: we reached the playoffs, made the quarterfinals and won the Team Spirit Award.",tr:"İlk yarışmamız: playoff aşamasına yükseldik, çeyrek finale çıktık ve Team Spirit Award kazandık."}, chip:{en:"Award",tr:"Ödül"} },
+    { date:{en:"2026",tr:"2026"}, t:{en:"FIRST Championship, Houston",tr:"FIRST Championship, Houston"}, p:{en:"Three of our members went to Houston, studied robots and engineering from 600+ teams and brought what they learned back to the team.",tr:"Takımımızdan 3 kişi Houston’a gitti; 600’den fazla takımın robotlarını ve mühendislik çözümlerini inceleyip deneyimlerini takımla paylaştı."}, chip:{en:"From Hatay to Houston",tr:"Hatay’dan Houston’a"} },
     { date:{en:"2027",tr:"2027"}, t:{en:"Second season: BIOCORE™",tr:"İkinci sezon: BIOCORE™"}, p:{en:"Registered for the 2027 BIOCORE™ season presented by Haas.",tr:"Haas sunumlu 2027 BIOCORE™ sezonuna kayıtlıyız."} },
     { date:{en:"2–4 Apr 2027",tr:"2–4 Nisan 2027"}, cls:"next", t:{en:"Haliç Regional, Istanbul",tr:"Haliç Regional, İstanbul"}, p:{en:"Türkiye Atletizm Federasyonu Atletizm Salonu, Bakırköy.",tr:"Türkiye Atletizm Federasyonu Atletizm Salonu, Bakırköy."}, chip:{en:"Upcoming",tr:"Yaklaşıyor"} }
   ],
@@ -748,11 +908,15 @@ const I18N = {
     "hero.lede":"Antioch Rising is the FIRST Robotics Competition team of Hatay Fen Lisesi. We design, build and program competition robots the way Antioch’s mosaicists worked: one precise piece at a time.",
     "hero.cta1":"Explore the robot","hero.cta2":"Meet the team",
     "hero.logoAlt":"Antioch Rising crest: a phoenix in terracotta and gold mosaic tiles rising between olive branches, with the words Antioch Rising 10947",
-    "facts.rookie":"Rookie year","facts.school":"School","facts.home":"Home","facts.next":"Next event",
+    "facts.founded":"Founded","facts.foundedV":"May 2025","facts.crew":"Team","facts.crewV":"25 students · 5 mentors","facts.school":"School","facts.next":"Next event",
     "cd.days":n=>`2–4 Apr 2027 · in ${n} days`,"cd.now":"2–4 Apr 2027 · this week","cd.past":"2–4 Apr 2027",
     "id.eyebrow":"Our identity",
-    "id.statement":"Antioch has always made great things out of <em>small pieces.</em>",
-    "id.body":"The phoenix on our crest is laid in tesserae, the small stone tiles of the mosaics Antioch is famous for. We took the name and the method. A robot is thousands of small decisions, each one measured, tested and set in place by a team that rises together.",
+    "id.statement":"We rise <em>from our ashes.</em>",
+    "id.body":"Antioch Rising brings the students of Hatay Fen Lisesi together under the STEAM umbrella: science, technology, engineering, art and mathematics. Founded in May 2025, we are 25 students and 5 mentors.",
+    "id.body2":"The phoenix on our crest is laid in tesserae, the stone tiles of the mosaics Antakya is famous for. Like our city, we build great things out of small pieces, and we rise again.",
+    "goals.eyebrow":"Our goals",
+    "train.eyebrow":"Trainings we received","train.with":"With",
+    "team.photoAlt":"The Antioch Rising team in black team shirts, posing together with the 10947 robot",
     "id.origin":"Founded around 300 BC on the Orontes, today’s Antakya.",
     "v1.t":"Precision","v1.p":"We model, measure and test before we cut. Small tolerances decide matches.",
     "v2.t":"One crew","v2.p":"Mechanical, software and PR work as one crew. A mosaic only holds when every tile does.",
@@ -761,16 +925,20 @@ const I18N = {
     "spec.name":"Robot name","spec.drivetrain":"Drivetrain","spec.weight":"Weight","spec.frame":"Frame perimeter","spec.motors":"Motors","spec.software":"Control software","spec.mechanism":"Signature mechanism",
     "spec.pending":"To be confirmed","robot.gallery":"Robot photos","robot.show":(i,n)=>`Show photo ${i} of ${n}`,"robot.note":"We only publish specs we have verified. Fields fill in as the team confirms them.","robot.game":"Game",
     "proc.eyebrow":"Engineering process","proc.title":"From blank page <em>to the field.</em>","proc.stage":"Stage",
-    "team.eyebrow":"The team","team.title":"The crew <em>behind the robot.</em>","team.note":"Our 2027 roster is being finalized. Names, roles and portraits will appear here as the season starts.","team.soon":"Roster coming soon",
+    "team.eyebrow":"The team","team.title":"The crew <em>behind the robot.</em>","team.note":"25 students and 5 mentors in three subteams. Names and roles will appear here as the 2027 roster is finalized.","team.soon":"Roster coming soon",
     "impact.eyebrow":"Impact & outreach","impact.title":"Robotics should be within reach of <em>every student in Hatay.</em>",
-    "impact.body":"We are a young team, and we are building our outreach the way we build robots: on purpose and on the record. Every activity we run will be logged here with the date, the place and who it reached.",
-    "impact.cta":"Invite us to your school","impact.log":"Outreach log","impact.logEmpty":"First entries arrive this season.",
+    "impact.statsNote":"The first four figures are from Arching to the Future Anatolia; the farmer count is from AquaValue.",
+    "impact.cta":"Invite us to your school",
+    "plan.eyebrow":"2027 plan","plan.title":"Next season, <em>wider reach.</em>",
     "sp.eyebrow":"Sponsors & partners","sp.title":"Set a piece <em>in the mosaic.</em>",
-    "sp.body":"Sponsors fund parts, tools, event registration and travel. Partners appear here at a size that matches their level of support.",
-    "sp.foot":"Tier names come from mosaic craft: the emblema is the central panel of a mosaic, and a tessera is a single tile.",
-    "sp.cta":"Become a sponsor","sp.open":"Open",
-    "tier.emblema":"Main sponsor","tier.grant":"Grants received","tier.tessera":"Supporter","tierName.emblema":"Emblema","tierName.grant":"Grant partners","tierName.tessera":"Tessera",
-    "season.eyebrow":"Season & achievements","season.title":"The record <em>so far.</em>","season.award":"Our first award, earned at our first event in our rookie season.","season.awardLink":"View on FRC Events ↗","season.source":"Results verified on",
+    "sp.body":"Sponsors and grants cover event registration, travel, accommodation and robot parts. Thank you to everyone who supports us.",
+    "sp.cta":"Become a sponsor",
+    "tierName.main":"Main sponsor","tierName.sponsor":"Sponsors","tierName.grant":"Grants",
+    "tier.main":"","tier.sponsor":"","tier.grant":g=>`${g} in grants received`,
+    "pk.eyebrow":"Sponsorship packages","pk.title":"Help us <em>rise higher.</em>",
+    "pk.foot":"Logo placement on printed materials depends on the number of sponsors and their level of support. Each package includes the rights of the packages before it.",
+    "bd.label":"2027 season budget","bd.secured":"Covered","bd.gap":"Still needed","pk.plus":"Includes everything before it",
+    "season.eyebrow":"Season & achievements","season.title":"The record <em>so far.</em>","season.award":"Our first event, in our rookie season. Strong teamwork and team spirit earned us the Team Spirit Award.","season.chip1":"Playoffs","season.chip2":"Quarterfinals","season.chip3":"Rookie season","season.video":"Watch one of our matches ↗","season.awardLink":"View on FRC Events ↗","season.source":"Award records",
     "ct.eyebrow":"Contact & join","ct.title":"Join <em>the build.</em>","ct.intro":"Students, mentors, sponsors and collaborators: tell us who you are and what you have in mind.",
     "f.name":"Name","f.email":"Email","f.who":"I am a…","f.msg":"Message","f.submit":"Prepare message",
     "e.name":"Enter your name.","e.email":"Enter a valid email address, like name@example.com.","e.msg":"Write a short message.",
@@ -787,11 +955,15 @@ const I18N = {
     "hero.lede":"Antioch Rising, Hatay Fen Lisesi’nin FIRST Robotics Competition takımı. Yarışma robotlarımızı Antakya’nın mozaik ustaları gibi tasarlıyor, üretiyor ve programlıyoruz: her parçayı özenle yerine koyarak.",
     "hero.cta1":"Robotu keşfet","hero.cta2":"Ekiple tanış",
     "hero.logoAlt":"Antioch Rising arması: zeytin dalları arasında yükselen, toprak ve altın tonlu mozaik taşlarından bir anka kuşu ve Antioch Rising 10947 yazısı",
-    "facts.rookie":"İlk sezon","facts.school":"Okul","facts.home":"Şehir","facts.next":"Sıradaki etkinlik",
+    "facts.founded":"Kuruluş","facts.foundedV":"Mayıs 2025","facts.crew":"Takım","facts.crewV":"25 öğrenci · 5 mentor","facts.school":"Okul","facts.next":"Sıradaki etkinlik",
     "cd.days":n=>`2–4 Nisan 2027 · ${n} gün kaldı`,"cd.now":"2–4 Nisan 2027 · bu hafta","cd.past":"2–4 Nisan 2027",
     "id.eyebrow":"Kimliğimiz",
-    "id.statement":"Antakya, büyük eserlerini hep <em>küçük parçalardan</em> yaptı.",
-    "id.body":"Armamızdaki anka kuşu, Antakya’yı ünlü kılan mozaiklerin küçük taşlarıyla, tesseralarla döşendi. Biz de hem adı hem de yöntemi aldık. Bir robot binlerce küçük karardan oluşur; her biri ölçülür, test edilir ve birlikte yükselen bir ekip tarafından yerine konur.",
+    "id.statement":"Küllerimizden <em>doğuyoruz.</em>",
+    "id.body":"Antioch Rising, Hatay Fen Lisesi öğrencilerinin STEAM (fen, teknoloji, mühendislik, sanat ve matematik) çatısı altında buluşmasıyla oluştu. Mayıs 2025’te kurulan takımımızda 25 öğrenci ve 5 mentor var.",
+    "id.body2":"Armamızdaki anka kuşu, Antakya’yı ünlü kılan mozaiklerin taşlarıyla, tesseralarla döşendi. Şehrimiz gibi biz de büyük işleri küçük parçalardan kuruyor ve yeniden yükseliyoruz.",
+    "goals.eyebrow":"Hedeflerimiz",
+    "train.eyebrow":"Aldığımız eğitimler","train.with":"Birlikte:",
+    "team.photoAlt":"Siyah takım tişörtleriyle Antioch Rising ekibi, 10947 robotuyla birlikte toplu fotoğrafta",
     "id.origin":"MÖ 300 civarında Asi Nehri kıyısında kuruldu; bugünkü Antakya.",
     "v1.t":"Hassasiyet","v1.p":"Kesmeden önce modelliyor, ölçüyor ve test ediyoruz. Maçları küçük toleranslar belirler.",
     "v2.t":"Tek ekip","v2.p":"Mekanik, yazılım ve PR tek bir ekip olarak çalışır. Mozaik ancak her taş yerinde durursa ayakta kalır.",
@@ -800,16 +972,20 @@ const I18N = {
     "spec.name":"Robot adı","spec.drivetrain":"Sürüş sistemi","spec.weight":"Ağırlık","spec.frame":"Şasi çevresi","spec.motors":"Motorlar","spec.software":"Kontrol yazılımı","spec.mechanism":"Öne çıkan mekanizma",
     "spec.pending":"Doğrulanacak","robot.gallery":"Robot fotoğrafları","robot.show":(i,n)=>`${n} fotoğraftan ${i}. fotoğrafı göster`,"robot.note":"Yalnızca doğrulanmış teknik bilgileri yayınlıyoruz. Alanlar ekip onayladıkça dolacak.","robot.game":"Oyun",
     "proc.eyebrow":"Mühendislik süreci","proc.title":"Boş sayfadan <em>sahaya.</em>","proc.stage":"Aşama",
-    "team.eyebrow":"Ekip","team.title":"Robotun <em>arkasındaki ekip.</em>","team.note":"2027 kadromuz netleşiyor. İsimler, görevler ve portreler sezon başladıkça burada yer alacak.","team.soon":"Kadro yakında",
+    "team.eyebrow":"Ekip","team.title":"Robotun <em>arkasındaki ekip.</em>","team.note":"Üç alt ekipte 25 öğrenci ve 5 mentor. 2027 kadrosu netleştikçe isimler ve görevler burada yer alacak.","team.soon":"Kadro yakında",
     "impact.eyebrow":"Etki ve topluluk","impact.title":"Robotik, <em>Hatay’daki her öğrencinin</em> ulaşabileceği bir yerde olmalı.",
-    "impact.body":"Genç bir takımız ve topluluk çalışmalarımızı robot yapar gibi kuruyoruz: planlı ve kayıtlı. Düzenlediğimiz her etkinlik tarih, yer ve ulaştığı kişilerle birlikte burada yer alacak.",
-    "impact.cta":"Bizi okulunuza davet edin","impact.log":"Etkinlik kaydı","impact.logEmpty":"İlk girişler bu sezon geliyor.",
+    "impact.statsNote":"İlk dört rakam Arching to the Future Anatolia, çiftçi sayısı AquaValue projesinden.",
+    "impact.cta":"Bizi okulunuza davet edin",
+    "plan.eyebrow":"2027 planı","plan.title":"Yeni sezonda <em>daha geniş etki.</em>",
     "sp.eyebrow":"Sponsorlar ve destekçiler","sp.title":"Mozaiğe <em>bir taş koyun.</em>",
-    "sp.body":"Sponsorlar parça, alet, etkinlik kaydı ve ulaşım masraflarını karşılar. Destekçilerimiz burada katkı düzeyine uygun boyutta yer alır.",
-    "sp.foot":"Kademe adları mozaik sanatından gelir: emblema mozaiğin merkezindeki pano, tessera ise tek bir taştır.",
-    "sp.cta":"Sponsor olun","sp.open":"Açık",
-    "tier.emblema":"Ana sponsor","tier.grant":"Aldığımız hibeler","tier.tessera":"Destekçi","tierName.emblema":"Emblema","tierName.grant":"Hibe destekçileri","tierName.tessera":"Tessera",
-    "season.eyebrow":"Sezon ve başarılar","season.title":"Şimdiye kadarki <em>kayıt.</em>","season.award":"Çaylak sezonumuzda, ilk etkinliğimizde kazandığımız ilk ödül.","season.awardLink":"FRC Events’te görüntüle ↗","season.source":"Sonuçların kaynağı",
+    "sp.body":"Sponsorlarımız ve hibeler yarışma kaydı, ulaşım, konaklama ve robot parçalarını karşılıyor. Bize destek olan herkese teşekkür ederiz.",
+    "sp.cta":"Sponsor olun",
+    "tierName.main":"Ana sponsor","tierName.sponsor":"Sponsorlar","tierName.grant":"Hibeler",
+    "tier.main":"","tier.sponsor":"","tier.grant":g=>`${g} hibe desteği`,
+    "pk.eyebrow":"Sponsorluk paketleri","pk.title":"Daha yükseğe <em>birlikte.</em>",
+    "pk.foot":"Logoların basılı materyallerdeki yeri sponsor sayısına ve katkı düzeyine göre belirlenir. Her paket, öncekilerin haklarını da içerir.",
+    "bd.label":"2027 sezon bütçesi","bd.secured":"Karşılanan","bd.gap":"İhtiyaç","pk.plus":"Öncekilerin tümünü içerir",
+    "season.eyebrow":"Sezon ve başarılar","season.title":"Şimdiye kadarki <em>kayıt.</em>","season.award":"Çaylak sezonumuzda, ilk yarışmamızda. Güçlü takım çalışmamız ve takım ruhumuzla Team Spirit Award kazandık.","season.chip1":"Playoff","season.chip2":"Çeyrek final","season.chip3":"Çaylak sezon","season.video":"Bir maçımızı izleyin ↗","season.awardLink":"FRC Events’te görüntüle ↗","season.source":"Ödül kayıtları",
     "ct.eyebrow":"İletişim ve katılım","ct.title":"Yapıma <em>katıl.</em>","ct.intro":"Öğrenciler, mentorlar, sponsorlar ve iş birlikçiler: kim olduğunuzu ve aklınızdakini bize anlatın.",
     "f.name":"Ad soyad","f.email":"E-posta","f.who":"Ben bir…","f.msg":"Mesaj","f.submit":"Mesajı hazırla",
     "e.name":"Adınızı girin.","e.email":"Geçerli bir e-posta adresi girin, örneğin ad@ornek.com.","e.msg":"Kısa bir mesaj yazın.",
@@ -822,18 +998,84 @@ const I18N = {
 
 const STAGES = [
   {t:{en:"Concept",tr:"Konsept"}, p:{en:"Kickoff reveals the game. We read the manual line by line, break down scoring and decide what the robot must do well.",tr:"Kickoff’ta oyun açıklanır. Kural kitabını satır satır okur, puanlamayı çözümler ve robotun neyi iyi yapması gerektiğine karar veririz."}, tags:{en:["Game manual","Strategy","Sketches"],tr:["Kural kitabı","Strateji","Eskizler"]}},
-  {t:{en:"CAD",tr:"CAD"}, p:{en:"Ideas become assemblies. Every part is modelled and every clearance checked before any material is touched.",tr:"Fikirler montajlara dönüşür. Malzemeye dokunmadan önce her parça modellenir, her boşluk kontrol edilir."}, tags:{en:["Assemblies","Tolerances","Design review"],tr:["Montajlar","Toleranslar","Tasarım incelemesi"]}},
+  {t:{en:"CAD",tr:"CAD"}, p:{en:"Ideas become assemblies. Every part is modelled and every clearance checked before any material is touched.",tr:"Fikirler montajlara dönüşür. Malzemeye dokunmadan önce her parça modellenir, her boşluk kontrol edilir."}, tags:{en:["Onshape","Assemblies","Interference checks"],tr:["Onshape","Montajlar","Çakışma analizi"]}},
   {t:{en:"Prototype",tr:"Prototip"}, p:{en:"We build fast and rough to learn what works: wood, polycarbonate, zip ties and quick tests.",tr:"Neyin işe yaradığını öğrenmek için hızlı ve kaba üretiriz: ahşap, polikarbonat, kelepçe ve hızlı testler."}, tags:{en:["Rapid builds","Mechanism tests","Iteration"],tr:["Hızlı üretim","Mekanizma testleri","İterasyon"]}},
   {t:{en:"Fabrication",tr:"Üretim"}, p:{en:"Proven designs are cut, drilled and assembled into the competition robot.",tr:"Kanıtlanan tasarımlar kesilir, delinir ve yarışma robotuna monte edilir."}, tags:{en:["Cutting","Machining","Assembly"],tr:["Kesim","Talaşlı imalat","Montaj"]}},
-  {t:{en:"Programming",tr:"Yazılım"}, p:{en:"Code turns the machine into a robot: driver controls, autonomous routines and sensors.",tr:"Kod, makineyi robota dönüştürür: sürücü kontrolleri, otonom rutinler ve sensörler."}, tags:{en:["Teleop","Autonomous","Sensors"],tr:["Teleop","Otonom","Sensörler"]}},
+  {t:{en:"Programming",tr:"Yazılım"}, p:{en:"Code turns the machine into a robot: driver controls, autonomous routines and sensors.",tr:"Kod, makineyi robota dönüştürür: sürücü kontrolleri, otonom rutinler ve sensörler."}, tags:{en:["Java","WPILib","Autonomous"],tr:["Java","WPILib","Otonom"]}},
   {t:{en:"Testing",tr:"Test"}, p:{en:"Drive practice and tuning. We break things on purpose and fix them before an event does it for us.",tr:"Sürüş antrenmanı ve ayar. Bir şeyleri bilerek kırar, etkinlik bizim yerimize kırmadan tamir ederiz."}, tags:{en:["Drive practice","Tuning","Reliability"],tr:["Sürüş antrenmanı","Ayar","Güvenilirlik"]}},
   {t:{en:"Competition",tr:"Yarışma"}, p:{en:"Pit crew, scouting and match strategy, played out over three days on the field alongside other teams.",tr:"Pit ekibi, scouting ve maç stratejisi; diğer takımlarla birlikte üç gün boyunca sahada."}, tags:{en:["Pit","Scouting","Matches"],tr:["Pit","Scouting","Maçlar"]}}
 ];
-const OFFERS = [
-  {c:"var(--ember)", t:{en:"School visits & robot demos",tr:"Okul ziyaretleri ve robot gösterileri"}, p:{en:"Invite us and we bring the robot to your classroom and show how it was built.",tr:"Bizi davet edin; robotu sınıfınıza getirip nasıl yapıldığını gösterelim."}},
-  {c:"var(--ochre)", t:{en:"Intro workshops",tr:"Tanışma atölyeleri"}, p:{en:"Hands-on sessions on design, wiring and code for students meeting engineering for the first time.",tr:"Mühendislikle ilk kez tanışan öğrenciler için tasarım, kablolama ve kod üzerine uygulamalı oturumlar."}},
-  {c:"var(--laurel)", t:{en:"Support for new teams",tr:"Yeni takımlara destek"}, p:{en:"Advice and an extra pair of hands for schools in the region starting their own FIRST team.",tr:"Bölgede kendi FIRST takımını kuran okullara tavsiye ve destek."}}
+const GOALS = [
+  {c:["var(--ember)","var(--ochre)","var(--terra)"], t:{en:"Represent our country",tr:"Ülkemizi temsil etmek"}, p:{en:"Compete for Türkiye in national and international competitions.",tr:"Ulusal ve uluslararası yarışmalarda ülkemizi temsil etmek."}},
+  {c:["var(--laurel)","var(--cream)","var(--laurel)"], t:{en:"Grow as engineers",tr:"Mühendis olarak gelişmek"}, p:{en:"Develop ourselves as high-school students trained in engineering and business.",tr:"Mühendislik ve işletme eğitimleri alan liseli öğrenciler olarak kendimizi geliştirmek."}},
+  {c:["var(--ochre)","var(--ember)","var(--ochre)"], t:{en:"Share science",tr:"Bilimi paylaşmak"}, p:{en:"Bring science and technology to as many people as we can.",tr:"Bilim ve teknolojiyi olabildiğince fazla insana ulaştırmak."}},
+  {c:["var(--rust)","var(--ember)","var(--terra)"], t:{en:"Inspire young people",tr:"Gençlere ilham olmak"}, p:{en:"Run social responsibility projects and inspire all young people, Turkish youth first among them.",tr:"Sosyal sorumluluk projeleri hayata geçirmek; başta Türk gençleri olmak üzere tüm gençlere ilham kaynağı olmak."}}
 ];
+const TRAININGS = [
+  {tag:{en:"8 weeks · Onshape",tr:"8 hafta · Onshape"}, t:{en:"Advanced CAD",tr:"İleri düzey CAD"},
+   p:{en:"Parametric modelling to industry standard: 2D sketches and technical tolerances, 3D solid models optimised for strength and weight, and kinematic assemblies of the chassis, drivetrain and mechanisms with motion and interference analysis.",
+      tr:"Endüstri standardı parametrik modelleme: 2D eskiz ve teknik toleranslar, dayanım ve ağırlık optimizasyonuyla 3D katı modelleme, şasi, yürüyen aksam ve mekanizmaların hareket ve çakışma analizleriyle kinematik montajı."},
+   with:"FRC 1148"},
+  {tag:{en:"Java · WPILib",tr:"Java · WPILib"}, t:{en:"Software",tr:"Yazılım"},
+   p:{en:"Variables and data types, conditionals, loops, methods, classes and objects: the foundation for writing the code that drives the robot, controls its motors and runs it in autonomous.",
+      tr:"Değişkenler ve veri türleri, koşullu ifadeler, döngüler, metotlar, sınıflar ve nesneler: robotu süren, motorlarını kontrol eden ve otonom dönemde çalıştıran kodların temeli."},
+   with:"FRC 8159"},
+  {tag:{en:"Engineering disciplines",tr:"Mühendislik disiplinleri"}, t:{en:"Five disciplines",tr:"Beş disiplin"},
+   list:{en:["Programming","Pneumatic systems","Mechanical CAD/CAM","Electronic systems","Mechanical hardware"],tr:["Programlama","Pnömatik sistemler","Mekanik CAD/CAM","Elektronik sistemler","Mekanik donanım"]}}
+];
+const STATS = [
+  {v:"500+", l:{en:"hours of training",tr:"saat eğitim"}},
+  {v:"2.5K+", l:{en:"students reached",tr:"öğrenciye ulaştık"}},
+  {v:"150+", l:{en:"kits handed out",tr:"kit dağıttık"}},
+  {v:"20+", l:{en:"schools visited",tr:"okula gittik"}},
+  {v:"50+", l:{en:"farmers reached",tr:"çiftçiye ulaştık"}}
+];
+const PROJECTS = [
+  {id:"anatolia", img:"anatolia", w:1440, h:960, size:"xl", tag:"Arching to the Future",
+   t:{en:"Arching to the Future Anatolia",tr:"Arching to the Future Anatolia"},
+   p:{en:"We visited more than 20 schools, gave 500+ hours of training and handed out 150+ kits, reaching more than 2,500 students.",tr:"20’den fazla okula gittik, 500 saatin üzerinde eğitim verdik ve 150’den fazla kit dağıtarak 2.500’ü aşkın öğrenciye ulaştık."},
+   alt:{en:"Team members in black Antioch Rising shirts with a full classroom of students",tr:"Siyah Antioch Rising tişörtlü takım üyeleri, öğrencilerle dolu bir sınıfta"}},
+  {id:"rebuilt", img:"rebuilt-aid", w:857, h:1143, size:"tall", tag:"#BirKitBirUmut · #TeamHelpsTeam",
+   t:{en:"REBUILT AID",tr:"REBUILT AID"},
+   p:{en:"We rallied the international FIRST community so students in the earthquake zone could get back to STEM education. Bridging FRC teams, we brought donated robotics kits, parts and training materials to students in Antakya.",tr:"Deprem bölgesindeki öğrencilerin STEM eğitimine yeniden erişebilmesi için uluslararası FIRST topluluğunu harekete geçirdik. FRC takımları arasında köprü kurarak bağışlanan robotik kitlerini, parçaları ve eğitim materyallerini Antakya’daki kardeşlerimizle buluşturduk."},
+   note:{en:"With FRC 1148, 8795, 10396, 8159 and 9545",tr:"FRC 1148, 8795, 10396, 8159 ve 9545 ile"},
+   alt:{en:"Stacked boxes of donated robotics kits on a classroom table",tr:"Sınıftaki bir masada üst üste dizilmiş bağış robotik kit kutuları"}},
+  {id:"sparks", img:"sparks", w:432, h:358, size:"m", tag:"Antioch Sparks",
+   t:{en:"Antioch Sparks",tr:"Antioch Sparks"},
+   p:{en:"Seminars for primary, middle and high school students on STEM culture and the engineering mindset: the FIRST philosophy, the spirit of FRC and the story of Antioch Rising.",tr:"İlkokul, ortaokul ve lise öğrencilerine STEM kültürünü ve mühendislik vizyonunu aşılayan seminerler: FIRST felsefesi, FRC ruhu ve Antioch Rising’in yükseliş hikâyesi."},
+   alt:{en:"Group photo of students in front of Hatay Fen Lisesi",tr:"Hatay Fen Lisesi önünde öğrencilerle toplu fotoğraf"}},
+  {id:"homes", img:"cocuk-evleri", w:615, h:615, size:"m", tag:"#HerÇocuğunFırsatı",
+   t:{en:"Children’s homes",tr:"Çocuk evleri ile iş birliği"},
+   p:{en:"Every two weeks we invite children living in children’s homes to our workshop to meet science, technology and robotics and discover what they are good at.",tr:"Her iki haftada bir çocuk evlerinde kalan çocukları atölyemize davet ediyor; onları bilim, teknoloji ve robotikle buluşturup ilgi alanlarını keşfetmelerine yardım ediyoruz."},
+   note:{en:"1 workshop every 2 weeks",tr:"2 haftada 1 eğitim"},
+   alt:{en:"A circle of hands wearing Antioch Rising stickers",tr:"Antioch Rising çıkartmaları takılı ellerden oluşan bir çember"}},
+  {id:"girls", img:"girl-stem", w:1143, h:857, size:"m", tag:"#GirlsPower",
+   t:{en:"Girl STEM Days",tr:"Girl STEM Days"},
+   p:{en:"Workshop days just for girls, to strengthen gender equality in engineering, with hands-on practice on workshop machines, robot design and assembly.",tr:"Mühendislikte cinsiyet eşitliğini güçlendirmek için kız öğrencilere özel atölye günleri: atölye makineleri, robot tasarımı ve montajında birebir pratik."},
+   alt:{en:"Students gathered around the 10947 robot in a classroom",tr:"Sınıfta 10947 robotunun etrafında toplanan öğrenciler"}},
+  {id:"aqua", img:"aquavalue", w:1875, h:1326, size:"half", tag:"AquaValue",
+   t:{en:"AquaValue",tr:"AquaValue"},
+   p:{en:"Against the global water crisis, we met farmers in Hatay, an agricultural city, to share correct irrigation, sensor-based smart irrigation and water-saving methods.",tr:"Küresel su krizine karşı tarım kenti Hatay’da çiftçilerle buluşarak doğru sulama teknikleri, sensörlü akıllı sulama ve su tasarrufu üzerine farkındalık sağladık."},
+   note:{en:"50+ farmers reached",tr:"50+ çiftçiye ulaştık"},
+   alt:{en:"AquaValue brochure on smart irrigation",tr:"Akıllı sulama üzerine AquaValue broşürü"}},
+  {id:"museum", img:"sanal-muze", w:1250, h:884, size:"half", tag:"Sanal Müze",
+   t:{en:"Virtual Museum",tr:"Sanal Müze"},
+   p:{en:"Brochures with QR codes for Habib-i Neccar Mosque, St. Pierre Church and the Hatay Archaeology Museum open an interactive tour of Hatay’s historic buildings and mosaics.",tr:"Habib-i Neccar Camii, St. Pierre Kilisesi ve Hatay Arkeoloji Müzesi için hazırladığımız broşürlerdeki QR kodlarla tarihi yapıları ve mozaikleri sanal olarak keşfetmek mümkün."},
+   alt:{en:"Virtual Museum brochure with a mosaic from the Hatay Archaeology Museum",tr:"Hatay Arkeoloji Müzesi’nden bir mozaiğin yer aldığı Sanal Müze broşürü"}}
+];
+const PLAN = {
+  en:["Reach more children through our children’s homes workshops","Share our experience with more students through Antioch Sparks","Keep Girl STEM Days going at the same quality and pace","Bring AquaValue and the Virtual Museum to wider audiences","Adopt Samandağ Meydan Beach through WWF’s Coastal Adoption Programme"],
+  tr:["Çocuk evleri etkinliklerimizle daha çok çocuğa ulaşmak","Antioch Sparks ile deneyimlerimizi daha fazla öğrenciyle paylaşmak","Girl STEM Days’i aynı nitelik ve hızda sürdürmek","AquaValue ve Sanal Müze’yi daha geniş kitlelerle buluşturmak","WWF Sahil Sahiplenme Programı kapsamında Samandağ Meydan Plajı’nı sahiplenmek"]
+};
+const PACKAGES = [
+  {k:"bronze", name:{en:"Bronze",tr:"Bronz"}, price:"$2,500+", items:{en:["Company logo on the robot","Logo on the back of our jerseys","Logo in brochures and presentations","A special thank-you on social media and this website"],tr:["Robot üzerinde şirket logosu","Formanın arkasında logo","Broşür ve sunumlarda logo","Sosyal medya ve web sitesinde özel teşekkür"]}},
+  {k:"silver", name:{en:"Silver",tr:"Gümüş"}, price:"$5,000+", items:{en:["Everything in Bronze","A larger logo on the robot","The right to post using the team’s name"],tr:["Bronz paketin tüm hakları","Robot üzerinde daha büyük logo","Takım adını kullanarak paylaşım yapma hakkı"]}},
+  {k:"gold", name:{en:"Gold",tr:"Altın"}, price:"$9,000+", items:{en:["Your name and logo shared on all our social accounts","Promotional material in our pit area","An introduction at all our social responsibility work"],tr:["Adınız ve logonuz tüm sosyal medya hesaplarımızda","Pit alanında tanıtıcı materyal","Tüm sosyal sorumluluk çalışmalarımızda tanıtım"]}},
+  {k:"diamond", name:{en:"Diamond",tr:"Elmas"}, price:"$14,000+", items:{en:["Top placement on our social media","Free design, programming, mechanical and STEAM training for your company’s children","Help shape the names of our events","Speaking and advertising at events we organise"],tr:["Sosyal medyada ilk sıralarda yer","Firmanızın çocuklarına ücretsiz tasarım, programlama, mekanik ve STEAM eğitimi","Etkinlik isimlerini şekillendirme hakkı","Düzenlediğimiz etkinliklerde konuşma ve reklam hakkı"]}},
+  {k:"platinum", name:{en:"Platinum",tr:"Platin"}, price:"$20,000+", items:{en:["The largest logo on the robot","Chest sponsorship on our jerseys","First place on all our social media"],tr:["Robot üzerinde en büyük logo","Forma göğüs sponsorluğu","Sosyal medyada ilk sırada yer"]}},
+  {k:"naming", name:{en:"Naming rights",tr:"İsim hakkı"}, price:"$40,000+", items:{en:["Every Platinum right","The robot carries your company’s name, or a name you choose, at national and international events","A weekly feature on our social media and custom content","Your logo beside ours on the jerseys, and a custom jersey for your company"],tr:["Platin paketin tüm hakları","Ulusal ve uluslararası yarışmalarda robota şirket adınız ya da seçtiğiniz bir isim","Sosyal medyada haftalık tanıtım ve size özel içerik","Formada takım logosunun yanında logonuz ve size özel forma"]}}
+];
+const BUDGET = { total:40750, secured:30000 };  // 2027 season, USD
 const PATHS = [
   {k:"student", t:{en:"Student",tr:"Öğrenci"}, p:{en:"Ask about joining a subteam",tr:"Bir alt ekibe katılmayı sorun"}},
   {k:"mentor", t:{en:"Mentor",tr:"Mentor"}, p:{en:"Share engineering or teaching skills",tr:"Mühendislik ya da eğitim bilginizi paylaşın"}},
@@ -991,25 +1233,44 @@ function renderTeam(){
       <div class="who">${g.members.length ? g.members.map(m=>`<span>${esc(m.name)}${m.role?' · '+esc(L(m.role)):''}</span>`).join('') : esc(T('team.soon'))}</div>
     </article>`).join('');
 }
+const usd = n => '$'+n.toLocaleString('en-US');
+function renderGoals(){
+  $('#goals').innerHTML = GOALS.map((g,i)=>`<li data-reveal style="--d:${i*.06}s"><div class="glyph" aria-hidden="true">${g.c.map(c=>`<i style="--c:${c}"></i>`).join('')}</div><h3>${esc(L(g.t))}</h3><p>${esc(L(g.p))}</p></li>`).join('');
+}
+function renderTrainings(){
+  $('#trainings').innerHTML = TRAININGS.map((t,i)=>`<article class="train" data-reveal style="--d:${i*.06}s">
+    <p class="mono train-tag">${esc(L(t.tag))}</p><h3>${esc(L(t.t))}</h3>
+    ${t.p?`<p>${esc(L(t.p))}</p>`:''}${t.list?`<ul class="tags">${L(t.list).map(x=>`<li>${esc(x)}</li>`).join('')}</ul>`:''}
+    ${t.with?`<p class="train-with mono">${esc(T('train.with'))} ${esc(t.with)}</p>`:''}</article>`).join('');
+}
 function renderImpact(){
-  $('#offers').innerHTML = OFFERS.map((o,i)=>`<li data-reveal style="--d:${i*.08}s"><i class="sq" style="--c:${o.c}" aria-hidden="true"></i><div><h3>${esc(L(o.t))}</h3><p>${esc(L(o.p))}</p></div></li>`).join('');
-  const log=$('#log');
-  const fmt=d=>new Intl.DateTimeFormat(lang==='tr'?'tr-TR':'en-GB',{day:'numeric',month:'short',year:'numeric'}).format(new Date(d));
-  log.innerHTML = `<p class="mono" style="color:var(--ochre)">${esc(T('impact.log'))}</p>` + (CONTENT.outreach.length
-    ? CONTENT.outreach.map(o=>`<div class="log-entry"><time class="mono" datetime="${esc(o.date)}">${esc(fmt(o.date))}</time><div><b>${esc(L(o.t))}</b><div style="color:var(--cream-dim);font-size:.9rem">${esc(L(o.place))}</div></div></div>`).join('')
-    : `<p style="color:var(--cream-dim);font-size:.95rem">${esc(T('impact.logEmpty'))}</p>`);
+  $('#stats').innerHTML = STATS.map(x=>`<div><dt>${esc(L(x.l))}</dt><dd>${esc(x.v)}</dd></div>`).join('');
+  $('#projects').innerHTML = PROJECTS.map((p,i)=>`<article class="project ${p.size}" data-reveal style="--d:${(i%3)*.06}s">
+    <figure><img src="assets/photos/${p.img}-600.webp" srcset="assets/photos/${p.img}-600.webp 600w, assets/photos/${p.img}-1200.webp ${Math.min(1200,p.w)}w" sizes="(min-width:1100px) ${p.size==='xl'?'60vw':p.size==='half'?'45vw':'30vw'}, 100vw" width="${p.w}" height="${p.h}" alt="${esc(L(p.alt))}" loading="lazy" decoding="async"></figure>
+    <div class="project-body"><p class="mono project-tag">${esc(p.tag)}</p><h3>${esc(L(p.t))}</h3><p>${esc(L(p.p))}</p>${p.note?`<p class="project-note">${esc(L(p.note))}</p>`:''}</div>
+  </article>`).join('');
+  $('#planList').innerHTML = L(PLAN).map(x=>`<li>${esc(x)}</li>`).join('');
 }
 function renderSponsors(){
-  const tiers=[['emblema','t1',1],['grant','t2',2],['tessera','t3',4]];
-  $('#tiers').innerHTML = tiers.map(([k,cls,n],i)=>{
-    const list=CONTENT.sponsors.filter(s=>s.tier===k);
-    const label=T('tierName.'+k);
-    const slots = list.length
-      ? list.map(s=>{const inner=s.logo?`<img src="${esc(s.logo)}" alt="${esc(s.name)}" loading="lazy">`:`<span class="wordmark">${esc(s.name)}</span>`;
-          return s.url?`<a class="slot" href="${esc(s.url)}" target="_blank" rel="noopener">${inner}</a>`:`<div class="slot">${inner}</div>`;}).join('')
-      : Array.from({length:n},()=>`<a class="slot" href="#contact" data-topic="sponsor">${esc(T('sp.open'))}</a>`).join('');
-    return `<div class="tier ${cls}" data-reveal style="--d:${i*.08}s"><div class="tier-label"><h3>${esc(label)}</h3><span>${esc(T('tier.'+k))}</span></div><div class="slots">${slots}</div></div>`;
+  const tiers=[['main','t1'],['sponsor','t2'],['grant','t3']];
+  $('#tiers').innerHTML = tiers.map(([k,cls],i)=>{
+    const list=CONTENT.sponsors.filter(s=>s.tier===k); if(!list.length) return '';
+    const sub=T('tier.'+k), subText=typeof sub==='function'?sub(CONTENT.grantsTotal):sub;
+    const slots=list.map(s=>{
+      const inner=s.logo?`<img src="${esc(s.logo)}" alt="${esc(s.name)}" loading="lazy">`:`<span class="wordmark">${esc(s.name)}</span>`;
+      const cap=s.role?`<span class="slot-cap">${esc(L(s.role))}</span>`:'';
+      const c=`slot${s.logo?' has-logo':''}`;
+      return s.url?`<a class="${c}" href="${esc(s.url)}" target="_blank" rel="noopener">${inner}${cap}</a>`:`<div class="${c}">${inner}${cap}</div>`;}).join('');
+    return `<div class="tier ${cls}" data-reveal style="--d:${i*.08}s"><div class="tier-label"><h3>${esc(T('tierName.'+k))}</h3>${subText?`<span>${esc(subText)}</span>`:''}</div><div class="slots" style="--n:${Math.min(list.length,k==='grant'?4:2)}">${slots}</div></div>`;
   }).join('');
+  const pct=Math.round(BUDGET.secured/BUDGET.total*100);
+  $('#budget').innerHTML = `<p class="mono">${esc(T('bd.label'))}</p><p class="budget-total">${usd(BUDGET.total)}</p>
+    <div class="budget-bar" role="img" aria-label="${esc(T('bd.secured'))} ${usd(BUDGET.secured)} / ${usd(BUDGET.total)}"><i style="width:${pct}%"></i></div>
+    <dl class="budget-legend"><div><dt>${esc(T('bd.secured'))}</dt><dd>${usd(BUDGET.secured)}</dd></div><div><dt>${esc(T('bd.gap'))}</dt><dd class="gap">${usd(BUDGET.total-BUDGET.secured)}</dd></div></dl>`;
+  $('#packages').innerHTML = PACKAGES.map((p,i)=>`<li class="pkg pkg-${p.k}" style="--i:${i}" data-reveal>
+    <div class="pkg-head"><h4>${esc(L(p.name))}</h4><p class="pkg-price">${esc(p.price)}</p></div>
+    <ul>${L(p.items).map(x=>`<li>${esc(x)}</li>`).join('')}</ul>
+    <a class="pkg-cta" href="#contact" data-topic="sponsor" aria-label="${esc(L(p.name))} · ${esc(T('sp.cta'))}">${esc(T('sp.cta'))} →</a></li>`).join('');
 }
 function renderTimeline(){
   $('#timeline').innerHTML = CONTENT.timeline.map(e=>`<li class="${e.cls||''}" data-reveal><time>${esc(L(e.date))}</time><h3>${esc(L(e.t))}${e.chip?`<span class="chip">${esc(L(e.chip))}</span>`:''}</h3><p>${esc(L(e.p))}</p></li>`).join('');
@@ -1060,7 +1321,7 @@ $('#copyBtn').onclick=()=>{
   try{ navigator.clipboard.writeText(composed).then(()=>{b.textContent=T('r.copied');setTimeout(()=>b.textContent=T('r.copy'),2200);},sel); }catch(err){ sel(); }
 };
 
-function renderAll(){ countdown(); renderRobot(); renderSteps(); renderTeam(); renderImpact(); renderSponsors(); renderTimeline(); renderContact(); observeReveals(document); }
+function renderAll(){ countdown(); renderGoals(); renderRobot(); renderSteps(); renderTrainings(); renderTeam(); renderImpact(); renderSponsors(); renderTimeline(); renderContact(); observeReveals(document); }
 
 /* ---------- reveals ---------- */
 const revealIO = 'IntersectionObserver' in window ? new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('is-in'); revealIO.unobserve(e.target);} }),{rootMargin:'0px 0px 8% 0px'}) : null;
